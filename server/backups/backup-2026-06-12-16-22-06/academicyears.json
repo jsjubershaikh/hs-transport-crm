@@ -1,0 +1,24 @@
+[
+  {
+    "_id": "6a2ab19af9ee8304115d0136",
+    "label": "2024-2025",
+    "startDate": "2024-06-01T00:00:00.000Z",
+    "endDate": "2025-04-30T00:00:00.000Z",
+    "isCurrent": false,
+    "isArchived": true,
+    "createdAt": "2026-06-11T13:01:14.188Z",
+    "updatedAt": "2026-06-11T13:01:14.188Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ab19af9ee8304115d0138",
+    "label": "2025-2026",
+    "startDate": "2025-06-01T00:00:00.000Z",
+    "endDate": "2026-04-30T00:00:00.000Z",
+    "isCurrent": true,
+    "isArchived": false,
+    "createdAt": "2026-06-11T13:01:14.223Z",
+    "updatedAt": "2026-06-11T13:01:14.223Z",
+    "__v": 0
+  }
+]

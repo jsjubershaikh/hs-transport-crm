@@ -1,0 +1,2441 @@
+[
+  {
+    "_id": "6a2ab19bf9ee8304115d05a7",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "admin",
+      "role": "superadmin"
+    },
+    "ip": "127.0.0.1",
+    "timestamp": "2026-06-11T13:01:15.583Z",
+    "__v": 0,
+    "createdAt": "2026-06-11T13:01:15.585Z",
+    "updatedAt": "2026-06-11T13:01:15.585Z"
+  },
+  {
+    "_id": "6a2ab19bf9ee8304115d05a8",
+    "userId": "6a2ab19af9ee8304115d014d",
+    "action": "auth.login",
+    "details": {
+      "username": "route1admin",
+      "role": "subadmin"
+    },
+    "ip": "127.0.0.1",
+    "timestamp": "2026-06-11T12:01:15.583Z",
+    "__v": 0,
+    "createdAt": "2026-06-11T13:01:15.585Z",
+    "updatedAt": "2026-06-11T13:01:15.585Z"
+  },
+  {
+    "_id": "6a2ab19bf9ee8304115d05a9",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.create",
+    "details": {
+      "name": "Ishaan Mehta",
+      "class": "Jr KG"
+    },
+    "ip": "127.0.0.1",
+    "timestamp": "2026-06-11T11:01:15.583Z",
+    "__v": 0,
+    "createdAt": "2026-06-11T13:01:15.585Z",
+    "updatedAt": "2026-06-11T13:01:15.585Z"
+  },
+  {
+    "_id": "6a2ab19bf9ee8304115d05aa",
+    "userId": "6a2ab19af9ee8304115d014d",
+    "action": "fee.collect",
+    "details": {
+      "name": "Rudra Sharma",
+      "month": "Aug",
+      "amount": 1500
+    },
+    "ip": "127.0.0.1",
+    "timestamp": "2026-06-11T10:01:15.583Z",
+    "__v": 0,
+    "createdAt": "2026-06-11T13:01:15.585Z",
+    "updatedAt": "2026-06-11T13:01:15.585Z"
+  },
+  {
+    "_id": "6a2ab19bf9ee8304115d05ab",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "route.create",
+    "details": {
+      "routeName": "Andheri East Circuit"
+    },
+    "ip": "127.0.0.1",
+    "timestamp": "2026-06-11T09:01:15.583Z",
+    "__v": 0,
+    "createdAt": "2026-06-11T13:01:15.585Z",
+    "updatedAt": "2026-06-11T13:01:15.585Z"
+  },
+  {
+    "_id": "6a2ab19bf9ee8304115d05ac",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "bus.create",
+    "details": {
+      "busNumber": "BUS-01"
+    },
+    "ip": "127.0.0.1",
+    "timestamp": "2026-06-11T08:01:15.583Z",
+    "__v": 0,
+    "createdAt": "2026-06-11T13:01:15.585Z",
+    "updatedAt": "2026-06-11T13:01:15.585Z"
+  },
+  {
+    "_id": "6a2ab19bf9ee8304115d05ad",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "subadmin.create",
+    "details": {
+      "username": "route1admin"
+    },
+    "ip": "127.0.0.1",
+    "timestamp": "2026-06-11T07:01:15.583Z",
+    "__v": 0,
+    "createdAt": "2026-06-11T13:01:15.585Z",
+    "updatedAt": "2026-06-11T13:01:15.585Z"
+  },
+  {
+    "_id": "6a2ab19bf9ee8304115d05ae",
+    "userId": "6a2ab19af9ee8304115d014f",
+    "action": "auth.login",
+    "details": {
+      "username": "route2admin"
+    },
+    "ip": "127.0.0.1",
+    "timestamp": "2026-06-11T06:01:15.583Z",
+    "__v": 0,
+    "createdAt": "2026-06-11T13:01:15.585Z",
+    "updatedAt": "2026-06-11T13:01:15.585Z"
+  },
+  {
+    "_id": "6a2ab19bf9ee8304115d05af",
+    "userId": "6a2ab19af9ee8304115d014d",
+    "action": "student.create",
+    "details": {
+      "name": "Ira Shaikh"
+    },
+    "ip": "127.0.0.1",
+    "timestamp": "2026-06-11T05:01:15.583Z",
+    "__v": 0,
+    "createdAt": "2026-06-11T13:01:15.585Z",
+    "updatedAt": "2026-06-11T13:01:15.585Z"
+  },
+  {
+    "_id": "6a2ab19bf9ee8304115d05b0",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.collect",
+    "details": {
+      "name": "Yusuf Joshi",
+      "month": "Sep",
+      "amount": 1800
+    },
+    "ip": "127.0.0.1",
+    "timestamp": "2026-06-11T04:01:15.583Z",
+    "__v": 0,
+    "createdAt": "2026-06-11T13:01:15.585Z",
+    "updatedAt": "2026-06-11T13:01:15.585Z"
+  },
+  {
+    "_id": "6a2ab19bf9ee8304115d05b1",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "settings.update",
+    "ip": "127.0.0.1",
+    "timestamp": "2026-06-11T03:01:15.583Z",
+    "__v": 0,
+    "createdAt": "2026-06-11T13:01:15.585Z",
+    "updatedAt": "2026-06-11T13:01:15.585Z"
+  },
+  {
+    "_id": "6a2ab19bf9ee8304115d05b2",
+    "userId": "6a2ab19af9ee8304115d014f",
+    "action": "fee.collect",
+    "details": {
+      "name": "Ayaan Sharma",
+      "month": "Jul",
+      "amount": 1400
+    },
+    "ip": "127.0.0.1",
+    "timestamp": "2026-06-11T02:01:15.583Z",
+    "__v": 0,
+    "createdAt": "2026-06-11T13:01:15.585Z",
+    "updatedAt": "2026-06-11T13:01:15.585Z"
+  },
+  {
+    "_id": "6a2ab19bf9ee8304115d05b3",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "academicYear.setCurrent",
+    "details": {
+      "label": "2025-2026"
+    },
+    "ip": "127.0.0.1",
+    "timestamp": "2026-06-11T01:01:15.583Z",
+    "__v": 0,
+    "createdAt": "2026-06-11T13:01:15.585Z",
+    "updatedAt": "2026-06-11T13:01:15.585Z"
+  },
+  {
+    "_id": "6a2ab19bf9ee8304115d05b4",
+    "userId": "6a2ab19af9ee8304115d014d",
+    "action": "fee.reminders",
+    "details": {
+      "count": 4,
+      "channel": "whatsapp"
+    },
+    "ip": "127.0.0.1",
+    "timestamp": "2026-06-11T00:01:15.583Z",
+    "__v": 0,
+    "createdAt": "2026-06-11T13:01:15.585Z",
+    "updatedAt": "2026-06-11T13:01:15.585Z"
+  },
+  {
+    "_id": "6a2ab19bf9ee8304115d05b5",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "name": "Myra Patel"
+    },
+    "ip": "127.0.0.1",
+    "timestamp": "2026-06-10T23:01:15.583Z",
+    "__v": 0,
+    "createdAt": "2026-06-11T13:01:15.585Z",
+    "updatedAt": "2026-06-11T13:01:15.585Z"
+  },
+  {
+    "_id": "6a2ab1d5e14e471ba74c1cc5",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "admin",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T13:02:13.387Z",
+    "createdAt": "2026-06-11T13:02:13.392Z",
+    "updatedAt": "2026-06-11T13:02:13.392Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ab20de14e471ba74c1d3b",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "user.update_profile",
+    "details": {
+      "updatedFields": [
+        "name",
+        "mobile",
+        "username",
+        "photo"
+      ]
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T13:03:09.040Z",
+    "createdAt": "2026-06-11T13:03:09.041Z",
+    "updatedAt": "2026-06-11T13:03:09.041Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ab21be14e471ba74c1d41",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "masudali",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T13:03:23.114Z",
+    "createdAt": "2026-06-11T13:03:23.115Z",
+    "updatedAt": "2026-06-11T13:03:23.115Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ab42be14e471ba74c1dd7",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.create",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "class": "3"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T13:12:11.214Z",
+    "createdAt": "2026-06-11T13:12:11.216Z",
+    "updatedAt": "2026-06-11T13:12:11.216Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ab4a1e14e471ba74c1ea6",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.collect",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "month": "Jun",
+      "amount": 1200,
+      "receiptNumber": "HT-2025-0232"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T13:14:09.265Z",
+    "createdAt": "2026-06-11T13:14:09.269Z",
+    "updatedAt": "2026-06-11T13:14:09.269Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ab4dde14e471ba74c1f96",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "prevFee": 1200,
+      "newFee": 1200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T13:15:09.585Z",
+    "createdAt": "2026-06-11T13:15:09.587Z",
+    "updatedAt": "2026-06-11T13:15:09.587Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ab50ee14e471ba74c2043",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update_siblings",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "siblingCount": 1,
+      "combinedFee": 2200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T13:15:58.303Z",
+    "createdAt": "2026-06-11T13:15:58.310Z",
+    "updatedAt": "2026-06-11T13:15:58.310Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ab511e14e471ba74c20b7",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "prevFee": 2200,
+      "newFee": 2200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T13:16:01.685Z",
+    "createdAt": "2026-06-11T13:16:01.693Z",
+    "updatedAt": "2026-06-11T13:16:01.693Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ab53de14e471ba74c218a",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.bulk_collect",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "totalAmount": 10000,
+      "monthsSettled": 5
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T13:16:45.365Z",
+    "createdAt": "2026-06-11T13:16:45.369Z",
+    "updatedAt": "2026-06-11T13:16:45.369Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ab5f6e14e471ba74c22d7",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.reminders",
+    "details": {
+      "count": 4,
+      "channel": "whatsapp"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T13:19:50.381Z",
+    "createdAt": "2026-06-11T13:19:50.383Z",
+    "updatedAt": "2026-06-11T13:19:50.383Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ab612e14e471ba74c22dd",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.reminders",
+    "details": {
+      "count": 4,
+      "channel": "whatsapp"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T13:20:18.845Z",
+    "createdAt": "2026-06-11T13:20:18.848Z",
+    "updatedAt": "2026-06-11T13:20:18.848Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2abe0e8d86cd777c6fffaa",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "masudali",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T13:54:22.124Z",
+    "createdAt": "2026-06-11T13:54:22.128Z",
+    "updatedAt": "2026-06-11T13:54:22.128Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ac26499d56e77a140c50a",
+    "userId": "6a2ab19af9ee8304115d014d",
+    "action": "auth.login",
+    "details": {
+      "username": "route1admin",
+      "role": "subadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T14:12:52.761Z",
+    "createdAt": "2026-06-11T14:12:52.765Z",
+    "updatedAt": "2026-06-11T14:12:52.765Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ac27e99d56e77a140c570",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "masudali",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T14:13:18.942Z",
+    "createdAt": "2026-06-11T14:13:18.944Z",
+    "updatedAt": "2026-06-11T14:13:18.944Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ac29199d56e77a140c5fb",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "months": [
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Student left transport from November"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T14:13:37.771Z",
+    "createdAt": "2026-06-11T14:13:37.788Z",
+    "updatedAt": "2026-06-11T14:13:37.788Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ac29299d56e77a140c62a",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "prevFee": 2200,
+      "newFee": 2200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T14:13:38.610Z",
+    "createdAt": "2026-06-11T14:13:38.612Z",
+    "updatedAt": "2026-06-11T14:13:38.612Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ac29799d56e77a140c693",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "prevFee": 2200,
+      "newFee": 2200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T14:13:43.005Z",
+    "createdAt": "2026-06-11T14:13:43.006Z",
+    "updatedAt": "2026-06-11T14:13:43.006Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ac2b499d56e77a140c701",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "months": [
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Student left transport from November"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T14:14:12.271Z",
+    "createdAt": "2026-06-11T14:14:12.273Z",
+    "updatedAt": "2026-06-11T14:14:12.273Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ac2b699d56e77a140c730",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "prevFee": 2200,
+      "newFee": 2200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T14:14:14.063Z",
+    "createdAt": "2026-06-11T14:14:14.124Z",
+    "updatedAt": "2026-06-11T14:14:14.124Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ac2c199d56e77a140c7cd",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "prevFee": 2200,
+      "newFee": 2200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T14:14:25.692Z",
+    "createdAt": "2026-06-11T14:14:25.693Z",
+    "updatedAt": "2026-06-11T14:14:25.693Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ac32499d56e77a140c8ce",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d0229",
+      "name": "Riya Desai",
+      "months": [
+        "Dec",
+        "Jan",
+        "Feb",
+        "Apr"
+      ],
+      "reason": "Student left transport from December"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T14:16:04.054Z",
+    "createdAt": "2026-06-11T14:16:04.059Z",
+    "updatedAt": "2026-06-11T14:16:04.059Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ac32699d56e77a140c8fc",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d0229",
+      "name": "Riya Desai",
+      "prevFee": 1300,
+      "newFee": 1300
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T14:16:06.250Z",
+    "createdAt": "2026-06-11T14:16:06.258Z",
+    "updatedAt": "2026-06-11T14:16:06.258Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ac33599d56e77a140c998",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d0229",
+      "name": "Riya Desai",
+      "prevFee": 1300,
+      "newFee": 1300
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T14:16:21.518Z",
+    "createdAt": "2026-06-11T14:16:21.626Z",
+    "updatedAt": "2026-06-11T14:16:21.626Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b07fd7e816df9b0687af8",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "masudali",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:09:49.491Z",
+    "createdAt": "2026-06-11T19:09:49.494Z",
+    "updatedAt": "2026-06-11T19:09:49.494Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b08107e816df9b0687b2a",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "masudali",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:10:08.487Z",
+    "createdAt": "2026-06-11T19:10:08.489Z",
+    "updatedAt": "2026-06-11T19:10:08.489Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b08777e816df9b0687bde",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.create",
+    "details": {
+      "studentId": "6a2b08777e816df9b0687bcb",
+      "name": "Umair Shaikh",
+      "class": "3"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:11:51.353Z",
+    "createdAt": "2026-06-11T19:11:51.355Z",
+    "updatedAt": "2026-06-11T19:11:51.355Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b08e07e816df9b0687c6c",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update_siblings",
+    "details": {
+      "studentId": "6a2b08777e816df9b0687bcb",
+      "siblingCount": 1,
+      "combinedFee": 2400
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:13:36.089Z",
+    "createdAt": "2026-06-11T19:13:36.094Z",
+    "updatedAt": "2026-06-11T19:13:36.094Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b08e57e816df9b0687cfa",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b08777e816df9b0687bcb",
+      "name": "Umair Shaikh",
+      "prevFee": 2400,
+      "newFee": 2400
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:13:41.827Z",
+    "createdAt": "2026-06-11T19:13:41.839Z",
+    "updatedAt": "2026-06-11T19:13:41.839Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b09477e816df9b0687d96",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update_siblings",
+    "details": {
+      "studentId": "6a2b08777e816df9b0687bcb",
+      "siblingCount": 1,
+      "combinedFee": 1200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:15:19.124Z",
+    "createdAt": "2026-06-11T19:15:19.127Z",
+    "updatedAt": "2026-06-11T19:15:19.127Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b094a7e816df9b0687dfe",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b08777e816df9b0687bcb",
+      "name": "Umair Shaikh",
+      "prevFee": 1200,
+      "newFee": 1200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:15:22.010Z",
+    "createdAt": "2026-06-11T19:15:22.011Z",
+    "updatedAt": "2026-06-11T19:15:22.011Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b09727e816df9b0687ebe",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b08777e816df9b0687bcb",
+      "name": "Umair Shaikh",
+      "prevFee": 1200,
+      "newFee": 2400
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:16:02.441Z",
+    "createdAt": "2026-06-11T19:16:02.460Z",
+    "updatedAt": "2026-06-11T19:16:02.460Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b097d7e816df9b0687f4c",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b08777e816df9b0687bcb",
+      "name": "Umair Shaikh",
+      "prevFee": 2400,
+      "newFee": 2400
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:16:13.525Z",
+    "createdAt": "2026-06-11T19:16:13.527Z",
+    "updatedAt": "2026-06-11T19:16:13.527Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b09947e816df9b0688033",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.delete",
+    "details": {
+      "studentId": "6a2b08777e816df9b0687bcb",
+      "name": "Umair Shaikh"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:16:36.543Z",
+    "createdAt": "2026-06-11T19:16:36.560Z",
+    "updatedAt": "2026-06-11T19:16:36.560Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b0a277e816df9b0688055",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.create",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "class": "5"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:19:03.125Z",
+    "createdAt": "2026-06-11T19:19:03.126Z",
+    "updatedAt": "2026-06-11T19:19:03.126Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b0a5e7e816df9b0688095",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update_siblings",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "siblingCount": 1,
+      "combinedFee": 1500
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:19:58.299Z",
+    "createdAt": "2026-06-11T19:19:58.308Z",
+    "updatedAt": "2026-06-11T19:19:58.308Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b0a607e816df9b06880fd",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "prevFee": 1500,
+      "newFee": 1500
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:20:00.959Z",
+    "createdAt": "2026-06-11T19:20:00.964Z",
+    "updatedAt": "2026-06-11T19:20:00.964Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b0a6e7e816df9b06881bd",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "prevFee": 1500,
+      "newFee": 3000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:20:14.192Z",
+    "createdAt": "2026-06-11T19:20:14.194Z",
+    "updatedAt": "2026-06-11T19:20:14.194Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b0a887e816df9b068824c",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "months": [
+        "Jun",
+        "Jul"
+      ],
+      "reason": "Student joined after this month"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:20:40.040Z",
+    "createdAt": "2026-06-11T19:20:40.041Z",
+    "updatedAt": "2026-06-11T19:20:40.041Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b0abf7e816df9b06882e2",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.bulk_collect",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "totalAmount": 7000,
+      "monthsSettled": 3
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:21:35.156Z",
+    "createdAt": "2026-06-11T19:21:35.160Z",
+    "updatedAt": "2026-06-11T19:21:35.160Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b0b617e816df9b06883d0",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "months": [
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Student left transport from November"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:24:17.425Z",
+    "createdAt": "2026-06-11T19:24:17.429Z",
+    "updatedAt": "2026-06-11T19:24:17.429Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b0b617e816df9b06883ff",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "prevFee": 2200,
+      "newFee": 2200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:24:17.941Z",
+    "createdAt": "2026-06-11T19:24:17.943Z",
+    "updatedAt": "2026-06-11T19:24:17.943Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b0b797e816df9b06884a4",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "prevFee": 2200,
+      "newFee": 2200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:24:41.959Z",
+    "createdAt": "2026-06-11T19:24:41.960Z",
+    "updatedAt": "2026-06-11T19:24:41.960Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b0b877e816df9b068856e",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "months": [
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Student left transport from November"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:24:55.146Z",
+    "createdAt": "2026-06-11T19:24:55.147Z",
+    "updatedAt": "2026-06-11T19:24:55.147Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b0b877e816df9b068859d",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "prevFee": 2200,
+      "newFee": 2200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:24:55.515Z",
+    "createdAt": "2026-06-11T19:24:55.523Z",
+    "updatedAt": "2026-06-11T19:24:55.523Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b11ef7e816df9b0688959",
+    "userId": "6a2ab19af9ee8304115d014d",
+    "action": "auth.login",
+    "details": {
+      "username": "route1admin",
+      "role": "subadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:52:15.584Z",
+    "createdAt": "2026-06-11T19:52:15.585Z",
+    "updatedAt": "2026-06-11T19:52:15.585Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b12a27e816df9b06889c6",
+    "userId": "6a2ab19af9ee8304115d014d",
+    "action": "student.create",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "class": "3"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:55:14.103Z",
+    "createdAt": "2026-06-11T19:55:14.104Z",
+    "updatedAt": "2026-06-11T19:55:14.104Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b12d87e816df9b0688a52",
+    "userId": "6a2ab19af9ee8304115d014d",
+    "action": "student.update_siblings",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "siblingCount": 1,
+      "combinedFee": 2000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:56:08.202Z",
+    "createdAt": "2026-06-11T19:56:08.207Z",
+    "updatedAt": "2026-06-11T19:56:08.207Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b12da7e816df9b0688aba",
+    "userId": "6a2ab19af9ee8304115d014d",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "prevFee": 2000,
+      "newFee": 2000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:56:10.857Z",
+    "createdAt": "2026-06-11T19:56:10.872Z",
+    "updatedAt": "2026-06-11T19:56:10.872Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b13077e816df9b0688b6f",
+    "userId": "6a2ab19af9ee8304115d014d",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "months": [
+        "Jun",
+        "Jul"
+      ],
+      "reason": "Student joined after this month"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:56:55.057Z",
+    "createdAt": "2026-06-11T19:56:55.185Z",
+    "updatedAt": "2026-06-11T19:56:55.185Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b13247e816df9b0688bee",
+    "userId": "6a2ab19af9ee8304115d014d",
+    "action": "fee.collect",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "month": "Aug",
+      "amount": 1000,
+      "receiptNumber": "HT-2025-0243"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:57:24.385Z",
+    "createdAt": "2026-06-11T19:57:24.389Z",
+    "updatedAt": "2026-06-11T19:57:24.389Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b13757e816df9b0688c9d",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "masudali",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:58:45.616Z",
+    "createdAt": "2026-06-11T19:58:45.617Z",
+    "updatedAt": "2026-06-11T19:58:45.617Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b13ab7e816df9b0688cd3",
+    "userId": "6a2ab19af9ee8304115d014d",
+    "action": "auth.login",
+    "details": {
+      "username": "route1admin",
+      "role": "subadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T19:59:39.231Z",
+    "createdAt": "2026-06-11T19:59:39.232Z",
+    "updatedAt": "2026-06-11T19:59:39.232Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b14637e816df9b0688de3",
+    "userId": "6a2ab19af9ee8304115d014d",
+    "action": "fee.bulk_collect",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "totalAmount": 6000,
+      "monthsSettled": 4
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T20:02:43.246Z",
+    "createdAt": "2026-06-11T20:02:43.248Z",
+    "updatedAt": "2026-06-11T20:02:43.248Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b183f7e816df9b0688f81",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "masudali",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T20:19:11.453Z",
+    "createdAt": "2026-06-11T20:19:11.455Z",
+    "updatedAt": "2026-06-11T20:19:11.455Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b19737e816df9b068902b",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.collect",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "month": "Oct",
+      "amount": 2000,
+      "receiptNumber": "HT-2025-0249"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T20:24:19.076Z",
+    "createdAt": "2026-06-11T20:24:19.079Z",
+    "updatedAt": "2026-06-11T20:24:19.079Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b1d937e816df9b06890b0",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "masudali",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T20:41:55.819Z",
+    "createdAt": "2026-06-11T20:41:55.820Z",
+    "updatedAt": "2026-06-11T20:41:55.820Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b1ffae01bf2cf294d7cab",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "masudali",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T20:52:10.372Z",
+    "createdAt": "2026-06-11T20:52:10.376Z",
+    "updatedAt": "2026-06-11T20:52:10.376Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b20cae01bf2cf294d7d39",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.create",
+    "details": {
+      "studentId": "6a2b20c9e01bf2cf294d7d26",
+      "name": "altamash",
+      "class": "7"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T20:55:38.031Z",
+    "createdAt": "2026-06-11T20:55:38.033Z",
+    "updatedAt": "2026-06-11T20:55:38.033Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b20d6e01bf2cf294d7d9c",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.delete",
+    "details": {
+      "studentId": "6a2b20c9e01bf2cf294d7d26",
+      "name": "altamash"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T20:55:50.842Z",
+    "createdAt": "2026-06-11T20:55:50.843Z",
+    "updatedAt": "2026-06-11T20:55:50.843Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b20e3e01bf2cf294d7dc1",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "prevFee": 2200,
+      "newFee": 2200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T20:56:03.909Z",
+    "createdAt": "2026-06-11T20:56:03.911Z",
+    "updatedAt": "2026-06-11T20:56:03.911Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b20fee01bf2cf294d7e2f",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "months": [
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Student left transport from November",
+      "restore": false
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T20:56:30.742Z",
+    "createdAt": "2026-06-11T20:56:30.743Z",
+    "updatedAt": "2026-06-11T20:56:30.743Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b20ffe01bf2cf294d7e5e",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "prevFee": 2200,
+      "newFee": 2200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T20:56:31.022Z",
+    "createdAt": "2026-06-11T20:56:31.023Z",
+    "updatedAt": "2026-06-11T20:56:31.023Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b2107e01bf2cf294d7f09",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh",
+      "prevFee": 2200,
+      "newFee": 2200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T20:56:39.526Z",
+    "createdAt": "2026-06-11T20:56:39.536Z",
+    "updatedAt": "2026-06-11T20:56:39.536Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b2321e01bf2cf294d8079",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.delete",
+    "details": {
+      "studentId": "6a2ab42ae14e471ba74c1dc4",
+      "name": "Juber Shaikh"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-11T21:05:37.374Z",
+    "createdAt": "2026-06-11T21:05:37.375Z",
+    "updatedAt": "2026-06-11T21:05:37.375Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b970259056106a386b4ff",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "masudali",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T05:20:02.596Z",
+    "createdAt": "2026-06-12T05:20:02.600Z",
+    "updatedAt": "2026-06-12T05:20:02.600Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b9c25b0d686258d32abdf",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "masudali",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T05:41:57.801Z",
+    "createdAt": "2026-06-12T05:41:57.805Z",
+    "updatedAt": "2026-06-12T05:41:57.805Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b9dc3b0d686258d32adca",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.edit",
+    "details": {
+      "feeRecordId": "6a2ab19bf9ee8304115d023c",
+      "studentId": "6a2ab19bf9ee8304115d0235",
+      "month": "Dec",
+      "paidAmount": 0
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T05:48:51.734Z",
+    "createdAt": "2026-06-12T05:48:51.737Z",
+    "updatedAt": "2026-06-12T05:48:51.737Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b9dcbb0d686258d32ae43",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.edit",
+    "details": {
+      "feeRecordId": "6a2ab19bf9ee8304115d023d",
+      "studentId": "6a2ab19bf9ee8304115d0235",
+      "month": "Jan",
+      "paidAmount": 0
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T05:48:59.545Z",
+    "createdAt": "2026-06-12T05:48:59.548Z",
+    "updatedAt": "2026-06-12T05:48:59.548Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b9dd5b0d686258d32aebc",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.edit",
+    "details": {
+      "feeRecordId": "6a2ab19bf9ee8304115d023f",
+      "studentId": "6a2ab19bf9ee8304115d0235",
+      "month": "Mar",
+      "paidAmount": 0
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T05:49:09.414Z",
+    "createdAt": "2026-06-12T05:49:09.416Z",
+    "updatedAt": "2026-06-12T05:49:09.416Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b9de1b0d686258d32af47",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d0235",
+      "name": "Vivaan Reddy",
+      "months": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Student left transport from October",
+      "restore": false
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T05:49:21.071Z",
+    "createdAt": "2026-06-12T05:49:21.073Z",
+    "updatedAt": "2026-06-12T05:49:21.073Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b9de1b0d686258d32af75",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d0235",
+      "name": "Vivaan Reddy",
+      "prevFee": 1200,
+      "newFee": 1200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T05:49:21.538Z",
+    "createdAt": "2026-06-12T05:49:21.540Z",
+    "updatedAt": "2026-06-12T05:49:21.540Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b9df5b0d686258d32b002",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d0235",
+      "name": "Vivaan Reddy",
+      "months": [
+        "Oct"
+      ],
+      "reason": "Student rejoined from November — gap months waived",
+      "restore": false
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T05:49:41.319Z",
+    "createdAt": "2026-06-12T05:49:41.321Z",
+    "updatedAt": "2026-06-12T05:49:41.321Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2b9df5b0d686258d32b030",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d0235",
+      "name": "Vivaan Reddy",
+      "prevFee": 1200,
+      "newFee": 1200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T05:49:41.730Z",
+    "createdAt": "2026-06-12T05:49:41.732Z",
+    "updatedAt": "2026-06-12T05:49:41.732Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2ba594b0d686258d32b0eb",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "masudali",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T06:22:12.958Z",
+    "createdAt": "2026-06-12T06:22:12.959Z",
+    "updatedAt": "2026-06-12T06:22:12.959Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2baaab90181c266b002ba9",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.collect",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d01ed",
+      "name": "Aarav Joshi",
+      "month": "Apr",
+      "amount": 1600,
+      "receiptNumber": "HT-2025-0250"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T06:43:55.615Z",
+    "createdAt": "2026-06-12T06:43:55.619Z",
+    "updatedAt": "2026-06-12T06:43:55.619Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2baac290181c266b002c0f",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.collect",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "month": "Nov",
+      "amount": 1000,
+      "receiptNumber": "HT-2025-0251"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T06:44:18.689Z",
+    "createdAt": "2026-06-12T06:44:18.690Z",
+    "updatedAt": "2026-06-12T06:44:18.690Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bab0d90181c266b002d3a",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.bulk_collect",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "totalAmount": 5000,
+      "monthsSettled": 2
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T06:45:33.711Z",
+    "createdAt": "2026-06-12T06:45:33.716Z",
+    "updatedAt": "2026-06-12T06:45:33.716Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bab4d90181c266b002e56",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d0235",
+      "name": "Vivaan Reddy",
+      "months": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Student left transport from October",
+      "restore": false
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T06:46:37.564Z",
+    "createdAt": "2026-06-12T06:46:37.566Z",
+    "updatedAt": "2026-06-12T06:46:37.566Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bab4d90181c266b002e88",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d0235",
+      "name": "Vivaan Reddy",
+      "prevFee": 1200,
+      "newFee": 1200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T06:46:37.976Z",
+    "createdAt": "2026-06-12T06:46:37.978Z",
+    "updatedAt": "2026-06-12T06:46:37.978Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bab5b90181c266b002f36",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d0235",
+      "name": "Vivaan Reddy",
+      "prevFee": 1200,
+      "newFee": 1200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T06:46:51.334Z",
+    "createdAt": "2026-06-12T06:46:51.337Z",
+    "updatedAt": "2026-06-12T06:46:51.337Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bab5b90181c266b002f79",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d0235",
+      "name": "Vivaan Reddy",
+      "prevFee": 1200,
+      "newFee": 1200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T06:46:51.756Z",
+    "createdAt": "2026-06-12T06:46:51.758Z",
+    "updatedAt": "2026-06-12T06:46:51.758Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bab7590181c266b00304a",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d01ed",
+      "name": "Aarav Joshi",
+      "prevFee": 1600,
+      "newFee": 1600
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T06:47:17.286Z",
+    "createdAt": "2026-06-12T06:47:17.287Z",
+    "updatedAt": "2026-06-12T06:47:17.287Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2baba290181c266b003120",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d0235",
+      "name": "Vivaan Reddy",
+      "months": [
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Student left transport from October",
+      "restore": false
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T06:48:02.728Z",
+    "createdAt": "2026-06-12T06:48:02.731Z",
+    "updatedAt": "2026-06-12T06:48:02.731Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2baba390181c266b003154",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d0235",
+      "name": "Vivaan Reddy",
+      "prevFee": 1200,
+      "newFee": 1200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T06:48:03.106Z",
+    "createdAt": "2026-06-12T06:48:03.108Z",
+    "updatedAt": "2026-06-12T06:48:03.108Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2baba890181c266b0031ce",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d0235",
+      "name": "Vivaan Reddy",
+      "prevFee": 1200,
+      "newFee": 1200
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T06:48:08.199Z",
+    "createdAt": "2026-06-12T06:48:08.201Z",
+    "updatedAt": "2026-06-12T06:48:08.201Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2babe690181c266b0032dc",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d0229",
+      "name": "Riya Desai",
+      "months": [
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Student joined after this month",
+      "restore": false
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T06:49:10.143Z",
+    "createdAt": "2026-06-12T06:49:10.144Z",
+    "updatedAt": "2026-06-12T06:49:10.144Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2babf390181c266b003379",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.delete",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d0229",
+      "name": "Riya Desai"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T06:49:23.898Z",
+    "createdAt": "2026-06-12T06:49:23.899Z",
+    "updatedAt": "2026-06-12T06:49:23.899Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bac1690181c266b003405",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "months": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Student left transport from January",
+      "restore": false
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T06:49:58.630Z",
+    "createdAt": "2026-06-12T06:49:58.631Z",
+    "updatedAt": "2026-06-12T06:49:58.631Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bac1790181c266b00343a",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "prevFee": 2000,
+      "newFee": 2000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T06:49:59.063Z",
+    "createdAt": "2026-06-12T06:49:59.065Z",
+    "updatedAt": "2026-06-12T06:49:59.065Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bac3590181c266b0034fd",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "prevFee": 2000,
+      "newFee": 2000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T06:50:29.776Z",
+    "createdAt": "2026-06-12T06:50:29.778Z",
+    "updatedAt": "2026-06-12T06:50:29.778Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2baf63ab094a08eaabefb3",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "months": [
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Student left transport from December",
+      "restore": false
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:04:03.686Z",
+    "createdAt": "2026-06-12T07:04:03.691Z",
+    "updatedAt": "2026-06-12T07:04:03.691Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2baf64ab094a08eaabefe9",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "prevFee": 2000,
+      "newFee": 2000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:04:04.208Z",
+    "createdAt": "2026-06-12T07:04:04.210Z",
+    "updatedAt": "2026-06-12T07:04:04.210Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2baf69ab094a08eaabf063",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "prevFee": 2000,
+      "newFee": 2000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:04:09.304Z",
+    "createdAt": "2026-06-12T07:04:09.305Z",
+    "updatedAt": "2026-06-12T07:04:09.305Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2baf83ab094a08eaabf130",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "months": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Student left transport from January",
+      "restore": false
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:04:35.392Z",
+    "createdAt": "2026-06-12T07:04:35.393Z",
+    "updatedAt": "2026-06-12T07:04:35.393Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2baf83ab094a08eaabf163",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "prevFee": 3000,
+      "newFee": 3000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:04:35.826Z",
+    "createdAt": "2026-06-12T07:04:35.826Z",
+    "updatedAt": "2026-06-12T07:04:35.826Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2baf93ab094a08eaabf23b",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "months": [
+        "Jun",
+        "Jul"
+      ],
+      "reason": "Student rejoined from January — gap months waived",
+      "restore": false
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:04:51.939Z",
+    "createdAt": "2026-06-12T07:04:51.941Z",
+    "updatedAt": "2026-06-12T07:04:51.941Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2baf94ab094a08eaabf26f",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "prevFee": 3000,
+      "newFee": 3000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:04:52.410Z",
+    "createdAt": "2026-06-12T07:04:52.411Z",
+    "updatedAt": "2026-06-12T07:04:52.411Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2baf94ab094a08eaabf29c",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "prevFee": 3000,
+      "newFee": 3000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:04:52.667Z",
+    "createdAt": "2026-06-12T07:04:52.668Z",
+    "updatedAt": "2026-06-12T07:04:52.668Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb0bbab094a08eaabf364",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "months": [
+        "Dec",
+        "Jan"
+      ],
+      "reason": "Student joined after this month",
+      "restore": false
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:09:47.068Z",
+    "createdAt": "2026-06-12T07:09:47.070Z",
+    "updatedAt": "2026-06-12T07:09:47.070Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb2ae23c2eea024f4ab0f",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "months": [
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Student left transport from December",
+      "restore": false
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:18:06.991Z",
+    "createdAt": "2026-06-12T07:18:07.004Z",
+    "updatedAt": "2026-06-12T07:18:07.004Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb2af23c2eea024f4ab43",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "prevFee": 3000,
+      "newFee": 3000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:18:07.534Z",
+    "createdAt": "2026-06-12T07:18:07.542Z",
+    "updatedAt": "2026-06-12T07:18:07.542Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb2b823c2eea024f4abf2",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "months": [
+        "Jun",
+        "Jul"
+      ],
+      "reason": "Student rejoined from December — gap months waived",
+      "restore": false
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:18:16.183Z",
+    "createdAt": "2026-06-12T07:18:16.186Z",
+    "updatedAt": "2026-06-12T07:18:16.186Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb2b823c2eea024f4ac26",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "prevFee": 3000,
+      "newFee": 3000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:18:16.618Z",
+    "createdAt": "2026-06-12T07:18:16.619Z",
+    "updatedAt": "2026-06-12T07:18:16.619Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb2b923c2eea024f4ac66",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "months": [
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Rejoined from December — fees restored",
+      "restore": true
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:18:17.357Z",
+    "createdAt": "2026-06-12T07:18:17.358Z",
+    "updatedAt": "2026-06-12T07:18:17.358Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb55f5e910bf951fcb917",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "masudali",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:29:35.062Z",
+    "createdAt": "2026-06-12T07:29:35.065Z",
+    "updatedAt": "2026-06-12T07:29:35.065Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb5bf5e910bf951fcb9ba",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.delete",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d0271",
+      "name": "Mishka Patel"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:31:11.414Z",
+    "createdAt": "2026-06-12T07:31:11.418Z",
+    "updatedAt": "2026-06-12T07:31:11.418Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb6265e910bf951fcba55",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "months": [
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Student left transport from December",
+      "restore": false
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:32:54.411Z",
+    "createdAt": "2026-06-12T07:32:54.414Z",
+    "updatedAt": "2026-06-12T07:32:54.414Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb6265e910bf951fcba88",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "prevFee": 2000,
+      "newFee": 2000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:32:54.932Z",
+    "createdAt": "2026-06-12T07:32:54.937Z",
+    "updatedAt": "2026-06-12T07:32:54.937Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb62e5e910bf951fcbb46",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "months": [
+        "Jun",
+        "Jul"
+      ],
+      "reason": "Student rejoined from December — gap months waived",
+      "restore": false
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:33:02.186Z",
+    "createdAt": "2026-06-12T07:33:02.192Z",
+    "updatedAt": "2026-06-12T07:33:02.192Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb62e5e910bf951fcbb7b",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "prevFee": 2000,
+      "newFee": 2000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:33:02.688Z",
+    "createdAt": "2026-06-12T07:33:02.692Z",
+    "updatedAt": "2026-06-12T07:33:02.692Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb62f5e910bf951fcbbba",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "months": [
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Rejoined from December — fees restored",
+      "restore": true
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:33:03.516Z",
+    "createdAt": "2026-06-12T07:33:03.517Z",
+    "updatedAt": "2026-06-12T07:33:03.517Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb6475e910bf951fcbc92",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "masudali",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:33:27.760Z",
+    "createdAt": "2026-06-12T07:33:27.761Z",
+    "updatedAt": "2026-06-12T07:33:27.761Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb6ce5e910bf951fcbd41",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.reminders",
+    "details": {
+      "count": 20,
+      "channel": "whatsapp"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:35:42.302Z",
+    "createdAt": "2026-06-12T07:35:42.305Z",
+    "updatedAt": "2026-06-12T07:35:42.305Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb941c13decdadf3fc7fa",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "masudali",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:46:09.149Z",
+    "createdAt": "2026-06-12T07:46:09.154Z",
+    "updatedAt": "2026-06-12T07:46:09.154Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb953c13decdadf3fc879",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "months": [
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Student left transport from December",
+      "restore": false
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:46:27.376Z",
+    "createdAt": "2026-06-12T07:46:27.378Z",
+    "updatedAt": "2026-06-12T07:46:27.378Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb953c13decdadf3fc8ac",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "prevFee": 2000,
+      "newFee": 2000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:46:27.908Z",
+    "createdAt": "2026-06-12T07:46:27.912Z",
+    "updatedAt": "2026-06-12T07:46:27.912Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb95dc13decdadf3fc999",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "prevFee": 2000,
+      "newFee": 2000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:46:37.421Z",
+    "createdAt": "2026-06-12T07:46:37.422Z",
+    "updatedAt": "2026-06-12T07:46:37.422Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb967c13decdadf3fca2b",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "months": [
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Student left transport from December",
+      "restore": false
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:46:47.760Z",
+    "createdAt": "2026-06-12T07:46:47.774Z",
+    "updatedAt": "2026-06-12T07:46:47.774Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb968c13decdadf3fca5d",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "prevFee": 2000,
+      "newFee": 2000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:46:48.227Z",
+    "createdAt": "2026-06-12T07:46:48.258Z",
+    "updatedAt": "2026-06-12T07:46:48.258Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb971c13decdadf3fcb42",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "months": [
+        "Jun",
+        "Jul"
+      ],
+      "reason": "Student rejoined from December — gap months waived",
+      "restore": false
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:46:57.945Z",
+    "createdAt": "2026-06-12T07:46:57.947Z",
+    "updatedAt": "2026-06-12T07:46:57.947Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb972c13decdadf3fcb78",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "prevFee": 2000,
+      "newFee": 2000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:46:58.437Z",
+    "createdAt": "2026-06-12T07:46:58.441Z",
+    "updatedAt": "2026-06-12T07:46:58.441Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb973c13decdadf3fcbb6",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "months": [
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Rejoined from December — fees restored",
+      "restore": true
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:46:59.215Z",
+    "createdAt": "2026-06-12T07:46:59.224Z",
+    "updatedAt": "2026-06-12T07:46:59.224Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb9f3c13decdadf3fccfb",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "fee.adjust",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "months": [
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr"
+      ],
+      "reason": "Student left transport from December",
+      "restore": false
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:49:07.183Z",
+    "createdAt": "2026-06-12T07:49:07.186Z",
+    "updatedAt": "2026-06-12T07:49:07.186Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bb9f3c13decdadf3fcd30",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b12a27e816df9b06889b3",
+      "name": "Sahil Pathan",
+      "prevFee": 2000,
+      "newFee": 2000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T07:49:07.701Z",
+    "createdAt": "2026-06-12T07:49:07.702Z",
+    "updatedAt": "2026-06-12T07:49:07.702Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bc73e504cc6af89311701",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "masudali",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T08:45:50.301Z",
+    "createdAt": "2026-06-12T08:45:50.304Z",
+    "updatedAt": "2026-06-12T08:45:50.304Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bc759504cc6af89311778",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2ab19bf9ee8304115d0205",
+      "name": "Aarav Patel",
+      "prevFee": 1100,
+      "newFee": 1100
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T08:46:17.545Z",
+    "createdAt": "2026-06-12T08:46:17.552Z",
+    "updatedAt": "2026-06-12T08:46:17.552Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bc985504cc6af89311899",
+    "userId": "6a2ab19af9ee8304115d014d",
+    "action": "auth.login",
+    "details": {
+      "username": "route1admin",
+      "role": "subadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T08:55:33.843Z",
+    "createdAt": "2026-06-12T08:55:33.844Z",
+    "updatedAt": "2026-06-12T08:55:33.844Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bc9a9504cc6af89311901",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "masudali",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T08:56:09.094Z",
+    "createdAt": "2026-06-12T08:56:09.095Z",
+    "updatedAt": "2026-06-12T08:56:09.095Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bccbfad3ba9049e281b1f",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "masudali",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T09:09:19.590Z",
+    "createdAt": "2026-06-12T09:09:19.594Z",
+    "updatedAt": "2026-06-12T09:09:19.594Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bdb14ad3ba9049e281c41",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "auth.login",
+    "details": {
+      "username": "masudali",
+      "role": "superadmin"
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T10:10:28.811Z",
+    "createdAt": "2026-06-12T10:10:28.812Z",
+    "updatedAt": "2026-06-12T10:10:28.812Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bdf6453928987983fa596",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "prevFee": 3000,
+      "newFee": 3000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T10:28:52.784Z",
+    "createdAt": "2026-06-12T10:28:52.791Z",
+    "updatedAt": "2026-06-12T10:28:52.791Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bdf7f53928987983fa63c",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "student.update",
+    "details": {
+      "studentId": "6a2b0a277e816df9b0688042",
+      "name": "Huzaifa Shaikh",
+      "prevFee": 3000,
+      "newFee": 3000
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T10:29:19.748Z",
+    "createdAt": "2026-06-12T10:29:19.765Z",
+    "updatedAt": "2026-06-12T10:29:19.765Z",
+    "__v": 0
+  },
+  {
+    "_id": "6a2bdfc653928987983fa6e2",
+    "userId": "6a2ab19af9ee8304115d014b",
+    "action": "user.update_profile",
+    "details": {
+      "updatedFields": [
+        "name",
+        "mobile",
+        "username",
+        "photo"
+      ]
+    },
+    "ip": "::1",
+    "timestamp": "2026-06-12T10:30:30.279Z",
+    "createdAt": "2026-06-12T10:30:30.280Z",
+    "updatedAt": "2026-06-12T10:30:30.280Z",
+    "__v": 0
+  }
+]

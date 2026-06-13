@@ -1,0 +1,30 @@
+[
+  {
+    "_id": "6a2bc94c31190d470dbc6880",
+    "date": "2026-06-12",
+    "collectorName": "Masudali",
+    "__v": 0,
+    "amount": 3000,
+    "collectorRouteId": null,
+    "collectorUserId": null,
+    "createdAt": "2026-06-12T08:54:36.799Z",
+    "receiptCount": 1,
+    "updatedAt": "2026-06-12T08:54:36.799Z",
+    "verifiedAt": "2026-06-12T08:54:36.797Z",
+    "verifiedBy": "6a2ab19af9ee8304115d014b"
+  },
+  {
+    "_id": "6a2bc95931190d470dbc6881",
+    "collectorName": "Route 1 Manager",
+    "date": "2026-06-12",
+    "__v": 0,
+    "amount": 2600,
+    "collectorRouteId": "6a2ab19af9ee8304115d013f",
+    "collectorUserId": "6a2ab19af9ee8304115d014d",
+    "createdAt": "2026-06-12T08:54:49.476Z",
+    "receiptCount": 2,
+    "updatedAt": "2026-06-12T08:54:49.476Z",
+    "verifiedAt": "2026-06-12T08:54:49.475Z",
+    "verifiedBy": "6a2ab19af9ee8304115d014b"
+  }
+]

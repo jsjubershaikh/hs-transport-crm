@@ -1,0 +1,9 @@
+{
+  "watch": ["src"],
+  "ext": "js,json",
+  "ignore": ["src/seed/*"],
+  "delay": "300",
+  "execMap": {
+    "js": "node --dns-result-order=ipv4first"
+  }
+}

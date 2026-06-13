@@ -1,0 +1,41 @@
+name: Daily Database Backup
+
+on:
+  schedule:
+    # Runs every day at 18:30 UTC (which is 12:00 AM Indian Standard Time IST)
+    - cron: '30 18 * * *'
+  workflow_dispatch: # Allows you to click a button on GitHub to run a backup instantly
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: |
+          cd server
+          npm install
+
+      - name: Run Backup Script
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+        run: |
+          cd server
+          npm run backup
+
+      - name: Commit and Push Backup Files
+        run: |
+          git config --global user.name "Database Backup Bot"
+          git config --global user.email "backup-bot@github.com"
+          git add server/backups/
+          # Only commit if there are changes (new backups created)
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-backup: $(date +'%Y-%m-%d')"
+          git push

@@ -1,0 +1,31 @@
+# Render Blueprint for the Huzaifa CRM API (Express + Socket.io).
+# Deploy: Render Dashboard → New → Blueprint → pick this repo.
+# Render supports persistent WebSockets, so Socket.io real-time works here.
+#
+# ⚠️  Before first deploy, set these 3 secret env vars in the Render dashboard:
+#     MONGODB_URI  — your Atlas SRV connection string
+#     JWT_SECRET   — a long random string (min 32 chars), e.g. generate with:
+#                    node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
+#     CLIENT_ORIGIN — your Vercel frontend URL, e.g. https://huzaifa-crm.vercel.app
+
+services:
+  - type: web
+    name: huzaifa-crm-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: MONGODB_URI
+        sync: false   # set in Render dashboard
+      - key: JWT_SECRET
+        sync: false   # set in Render dashboard
+      - key: CLIENT_ORIGIN
+        sync: false   # set in Render dashboard — your Vercel URL

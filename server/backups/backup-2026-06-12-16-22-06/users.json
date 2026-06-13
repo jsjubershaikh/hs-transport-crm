@@ -1,0 +1,46 @@
+[
+  {
+    "_id": "6a2ab19af9ee8304115d014b",
+    "photo": "https://res.cloudinary.com/da9gntnqr/image/upload/v1781260222/huzaifa-crm/profiles/dszbsfgyrqqoosyu7w2k.jpg",
+    "name": "Masudali",
+    "mobile": "9822920739",
+    "username": "masudali",
+    "role": "superadmin",
+    "assignedRouteId": null,
+    "isActive": true,
+    "passwordHash": "$2a$10$Yd11EepIiJ6iFwuGsnIRrugkKDMTfKDLdGxstbnkueoTluitNxTD6",
+    "createdAt": "2026-06-11T13:01:14.728Z",
+    "updatedAt": "2026-06-12T10:30:30.238Z",
+    "__v": 0,
+    "lastLoginAt": "2026-06-12T10:10:28.751Z"
+  },
+  {
+    "_id": "6a2ab19af9ee8304115d014d",
+    "photo": "",
+    "name": "Route 1 Manager",
+    "mobile": "9820000001",
+    "username": "route1admin",
+    "role": "subadmin",
+    "assignedRouteId": "6a2ab19af9ee8304115d013f",
+    "isActive": true,
+    "passwordHash": "$2a$10$8i/FUdkkGBEj/.PxpKUlue/XYzFP27mV71oP/adWaTF7N0TQVhN0O",
+    "createdAt": "2026-06-11T13:01:14.877Z",
+    "updatedAt": "2026-06-12T08:55:33.773Z",
+    "__v": 0,
+    "lastLoginAt": "2026-06-12T08:55:33.772Z"
+  },
+  {
+    "_id": "6a2ab19af9ee8304115d014f",
+    "photo": "",
+    "name": "Route 2 Manager",
+    "mobile": "9820000002",
+    "username": "route2admin",
+    "role": "subadmin",
+    "assignedRouteId": "6a2ab19af9ee8304115d0142",
+    "isActive": true,
+    "passwordHash": "$2a$10$TQBOV.BYX5AteaTbxpPVietnZbI7bX8X18PtXCDwwuzCAhV2/wfhS",
+    "createdAt": "2026-06-11T13:01:15.021Z",
+    "updatedAt": "2026-06-11T13:01:15.021Z",
+    "__v": 0
+  }
+]
