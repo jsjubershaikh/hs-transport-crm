@@ -1,14 +1,11 @@
 import { useState } from 'react';
 import { useNavigate, Navigate, Link } from 'react-router-dom';
-import { Eye, EyeOff, Loader2, LogIn, ShieldCheck, ArrowLeft } from 'lucide-react';
+import { Eye, EyeOff, Loader2, LogIn, ArrowLeft } from 'lucide-react';
 import AuthLayout from '../layouts/AuthLayout.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useUI } from '../context/UIContext.jsx';
 
-const DEMO = [
-  { role: 'Super Admin', username: 'admin', password: 'admin123' },
-  { role: 'Sub Admin 1', username: 'route1admin', password: 'pass123' },
-];
+
 
 export default function Login() {
   const { login, isAuthenticated } = useAuth();
@@ -43,7 +40,7 @@ export default function Login() {
     }
   };
 
-  const fillDemo = (d) => setForm({ username: d.username, password: d.password });
+
 
   return (
     <AuthLayout>
@@ -103,26 +100,7 @@ export default function Login() {
           </button>
         </form>
 
-        {/* Demo credentials */}
-        <div className="mt-6 rounded-xl border border-dashed border-border bg-slate-50 p-4">
-          <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold text-text-secondary">
-            <ShieldCheck size={14} /> Demo Credentials — click to fill
-          </div>
-          <div className="space-y-2">
-            {DEMO.map((d) => (
-              <button
-                key={d.username}
-                onClick={() => fillDemo(d)}
-                className="flex w-full items-center justify-between rounded-lg bg-white px-3 py-2 text-left text-sm transition hover:bg-primary/5"
-              >
-                <span className="font-medium text-text-primary">{d.role}</span>
-                <span className="font-mono text-xs text-text-secondary">
-                  {d.username} / {d.password}
-                </span>
-              </button>
-            ))}
-          </div>
-        </div>
+
       </div>
     </AuthLayout>
   );
