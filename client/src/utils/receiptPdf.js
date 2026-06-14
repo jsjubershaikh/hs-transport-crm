@@ -1,4 +1,4 @@
-/**
+﻿/**
  * receiptPdf.js
  * Generates a PDF from the rendered receipt DOM node using html2canvas + jsPDF.
  * Returns a Blob so callers can download or open WhatsApp.
@@ -65,7 +65,7 @@ export async function shareReceiptOnWhatsApp({ receiptNumber, studentName, month
     `📋 Receipt: ${receiptNumber}\n` +
     `📅 Month: ${month}\n` +
     `💰 Amount Paid: ₹${amount}\n\n` +
-    `- ${companyName || 'HS Transportation'}`;
+    `- ${companyName || 'HS School Bus'}`;
 
   window.open(`https://wa.me/91${mobile}?text=${encodeURIComponent(msg)}`, '_blank');
 }

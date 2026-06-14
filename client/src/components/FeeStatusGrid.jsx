@@ -1,4 +1,4 @@
-import { IndianRupee, Pencil, Download, MessageCircle } from 'lucide-react';
+﻿import { IndianRupee, Pencil, Download, MessageCircle } from 'lucide-react';
 import Badge from './Badge.jsx';
 import { MONTHS, MONTH_LABELS } from '../utils/constants.js';
 import { formatCurrency, formatDate } from '../utils/format.js';
@@ -22,8 +22,8 @@ export default function FeeStatusGrid({ fees = [], onCollect, onEdit, onReceipt,
     const month = MONTH_LABELS[f.month] || f.month;
     const text =
       f.remainingAmount > 0
-        ? `Dear Parent of ${student?.name || 'Student'}, transport fee for ${month} is ₹${f.remainingAmount} pending. Kindly pay at earliest. - HS Transportation`
-        : `Dear Parent of ${student?.name || 'Student'}, transport fee receipt for ${month}: ${formatCurrency(f.paidAmount)} paid. Receipt: ${f.receiptNumber || ''}. - HS Transportation`;
+        ? `Dear Parent of ${student?.name || 'Student'}, transport fee for ${month} is ₹${f.remainingAmount} pending. Kindly pay at earliest. - HS School Bus`
+        : `Dear Parent of ${student?.name || 'Student'}, transport fee receipt for ${month}: ${formatCurrency(f.paidAmount)} paid. Receipt: ${f.receiptNumber || ''}. - HS School Bus`;
     window.open(`https://wa.me/91${mobile}?text=${encodeURIComponent(text)}`, '_blank');
   };
 

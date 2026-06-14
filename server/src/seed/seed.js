@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Seed script — wipes every collection and inserts a realistic, internally
  * consistent demo dataset so the app is impressive immediately after `npm run seed`.
  *
@@ -326,7 +326,7 @@ export async function seedDatabase() {
 
 /** CLI runner: connect, seed, print, disconnect. */
 async function run() {
-  console.log('🌱 Seeding HS Transportation CRM...\n');
+  console.log('🌱 Seeding HS School Bus CRM...\n');
   await connectDB();
   const { summary, routes } = await seedDatabase();
 

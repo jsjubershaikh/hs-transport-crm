@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+﻿import { useState, useMemo, useEffect } from 'react';
 import { Wallet, IndianRupee, AlertCircle, Users, CheckCircle2, Send, FileSpreadsheet, MessageCircle, Loader2, Search } from 'lucide-react';
 import PageHeader from '../components/PageHeader.jsx';
 import FilterBar from '../components/FilterBar.jsx';
@@ -240,7 +240,7 @@ function BulkReminderModal({ open, rows, onClose }) {
             </div>
             <div className="rounded-xl bg-slate-50 p-3 text-sm text-text-secondary">
               <p className="mb-1 text-xs font-semibold uppercase">Message template</p>
-              <p className="italic">Dear Parent of <b>{'{studentName}'}</b>, Transport fee for <b>{'{month}'}</b> is ₹<b>{'{remaining}'}</b> pending. Kindly pay at earliest. - HS Transportation</p>
+              <p className="italic">Dear Parent of <b>{'{studentName}'}</b>, Transport fee for <b>{'{month}'}</b> is ₹<b>{'{remaining}'}</b> pending. Kindly pay at earliest. - HS School Bus</p>
             </div>
             <div className="max-h-52 space-y-1.5 overflow-y-auto">
               {due.map((r) => (

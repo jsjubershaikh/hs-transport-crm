@@ -1,4 +1,4 @@
-# 🚌 Huzaifa Transportation CRM
+# 🚌 HS School Bus CRM
 
 A complete, production-grade **School Bus Management CRM** built on the **MERN stack** (MongoDB · Express · React · Node.js) with **real-time multi-admin synchronization** via Socket.io.
 
@@ -31,7 +31,7 @@ A complete, production-grade **School Bus Management CRM** built on the **MERN s
 ## 📁 Project Structure
 
 ```
-huzaifa-transportation-crm/
+huzaifa-school-bus-crm/
 ├── package.json          # root scripts (concurrently runs both apps)
 ├── server/               # Express + MongoDB + Socket.io API
 │   └── src/

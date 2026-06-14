@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+﻿import mongoose from 'mongoose';
 
 /**
  * Single-document settings store. There is only ever one Settings doc; the
@@ -7,7 +7,7 @@ import mongoose from 'mongoose';
 const settingsSchema = new mongoose.Schema(
   {
     company: {
-      name: { type: String, default: 'HS Transportation' },
+      name: { type: String, default: 'HS School Bus' },
       address: { type: String, default: 'Pandit Nagar Cidco Colony Nashik-422009' },
       phone: { type: String, default: '9822920739 / 8668651801' },
       email: { type: String, default: 'huzaifatransportation@gmail.com' },
@@ -22,7 +22,7 @@ const settingsSchema = new mongoose.Schema(
       whatsappTemplate: {
         type: String,
         default:
-          'Dear Parent of {studentName}, Transport fee for {month} is ₹{remaining} pending. Kindly pay at earliest. - HS Transportation',
+          'Dear Parent of {studentName}, Transport fee for {month} is ₹{remaining} pending. Kindly pay at earliest. - HS School Bus',
       },
       smsTemplate: {
         type: String,

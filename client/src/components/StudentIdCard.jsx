@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+﻿import { useEffect, useRef } from 'react';
 import { Bus, MapPin, Phone, Calendar, BookOpen, Route as RouteIcon } from 'lucide-react';
 
 /**
@@ -230,7 +230,7 @@ const PRINT_CSS = `
 /* ─── HTML template builder ─── */
 function buildIdCardHtml({ student, settings }) {
   const company = settings?.company || {};
-  const companyName = company.name || 'HS Transportation';
+  const companyName = company.name || 'HS School Bus';
   const companyAddress = company.address || 'Pandit Nagar Cidco Colony Nashik-422009';
   const companyPhone = company.phone || '9822920739 / 8668651801';
 

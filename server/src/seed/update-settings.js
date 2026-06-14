@@ -1,4 +1,4 @@
-import { connectDB, disconnectDB } from '../config/db.js';
+﻿import { connectDB, disconnectDB } from '../config/db.js';
 import Settings from '../models/Settings.js';
 
 async function updateSettings() {
@@ -13,7 +13,7 @@ async function updateSettings() {
   }
 
   console.log('🔄 Updating company details...');
-  settings.company.name = 'HS Transportation';
+  settings.company.name = 'HS School Bus';
   settings.company.email = 'huzaifatransportation@gmail.com';
   settings.company.phone = '9822920739 / 8668651801';
   settings.company.address = 'Pandit Nagar Cidco Colony Nashik-422009';

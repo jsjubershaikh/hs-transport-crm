@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+﻿import { useState, useEffect, useCallback, useMemo } from 'react';
 import {
   TrendingUp, ReceiptText, ChevronLeft, ChevronRight,
   IndianRupee, User, FileSpreadsheet, Eye, Printer, MessageCircle,
@@ -389,7 +389,7 @@ function ReceiptsTab() {
 
   const shareWa = (r) => {
     const s = r.student || {};
-    const text = `Receipt ${r.receiptNumber} for ${MONTH_LABELS[r.month] || r.month}: ${formatCurrency(r.amount)} paid. - HS Transportation`;
+    const text = `Receipt ${r.receiptNumber} for ${MONTH_LABELS[r.month] || r.month}: ${formatCurrency(r.amount)} paid. - HS School Bus`;
     window.open(`https://wa.me/91${s.mobile}?text=${encodeURIComponent(text)}`, '_blank');
   };
 

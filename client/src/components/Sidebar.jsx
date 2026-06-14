@@ -61,7 +61,7 @@ export default function Sidebar() {
         </span>
         {!collapsed && (
           <span className="font-heading text-base font-extrabold leading-tight tracking-tight">
-            HS<span className="block text-[11px] font-medium text-white/50">Transportation CRM</span>
+            HS<span className="block text-[11px] font-medium text-white/50">School Bus CRM</span>
           </span>
         )}
         {showCollapse && (

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+﻿import { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
   ArrowLeft, Pencil, Printer, Phone, MapPin, Bus, Route as RouteIcon,
@@ -222,7 +222,7 @@ export default function StudentProfile() {
                           <button
                             className="btn btn-ghost btn-sm px-2 text-success"
                             title="WhatsApp"
-                            onClick={() => window.open(`https://wa.me/91${student.mobile}?text=${encodeURIComponent(`Receipt ${r.receiptNumber} for ${MONTH_LABELS[r.month] || r.month}: ${formatCurrency(r.amount)} - HS Transportation`)}`, '_blank')}
+                            onClick={() => window.open(`https://wa.me/91${student.mobile}?text=${encodeURIComponent(`Receipt ${r.receiptNumber} for ${MONTH_LABELS[r.month] || r.month}: ${formatCurrency(r.amount)} - HS School Bus`)}`, '_blank')}
                           >
                             <MessageCircle size={15} />
                           </button>
@@ -271,7 +271,7 @@ export default function StudentProfile() {
                           <button
                             className="btn btn-ghost btn-sm px-2 text-success"
                             title="WhatsApp"
-                            onClick={() => window.open(`https://wa.me/91${student.mobile}?text=${encodeURIComponent(`Bulk fee receipt ${r.receiptNumber}: ${formatCurrency(r.amount)} paid for ${r.bulkDetails?.length || ''} months - HS Transportation`)}`, '_blank')}
+                            onClick={() => window.open(`https://wa.me/91${student.mobile}?text=${encodeURIComponent(`Bulk fee receipt ${r.receiptNumber}: ${formatCurrency(r.amount)} paid for ${r.bulkDetails?.length || ''} months - HS School Bus`)}`, '_blank')}
                           >
                             <MessageCircle size={15} />
                           </button>

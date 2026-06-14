@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useCallback } from 'react';
+﻿import { useState, useMemo, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ReceiptText, Eye, Printer, MessageCircle, FileSpreadsheet } from 'lucide-react';
 import PageHeader from '../components/PageHeader.jsx';
@@ -54,7 +54,7 @@ export default function Receipts() {
 
   const shareWa = (r) => {
     const s = r.student || {};
-    const text = `Receipt ${r.receiptNumber} for ${MONTH_LABELS[r.month] || r.month}: ${formatCurrency(r.amount)} paid. - HS Transportation`;
+    const text = `Receipt ${r.receiptNumber} for ${MONTH_LABELS[r.month] || r.month}: ${formatCurrency(r.amount)} paid. - HS School Bus`;
     window.open(`https://wa.me/91${s.mobile}?text=${encodeURIComponent(text)}`, '_blank');
   };
 

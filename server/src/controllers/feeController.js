@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+﻿import mongoose from 'mongoose';
 import FeeRecord from '../models/FeeRecord.js';
 import Receipt from '../models/Receipt.js';
 import Student from '../models/Student.js';
@@ -688,7 +688,7 @@ export const sendReminders = asyncHandler(async (req, res) => {
       ? settings?.reminders?.smsTemplate
       : settings?.reminders?.whatsappTemplate;
   const fallback =
-    'Dear Parent of {studentName}, Transport fee for {month} is ₹{remaining} pending. Kindly pay at earliest. - HS Transportation';
+    'Dear Parent of {studentName}, Transport fee for {month} is ₹{remaining} pending. Kindly pay at earliest. - HS School Bus';
 
   const messages = fees
     .filter((f) => f.studentId)

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import {
   Bus, Wallet, Route as RouteIcon, MessageCircle, CalendarRange, ShieldCheck, FileText,
   ArrowRight, Star, MapPin, Phone, Mail, Menu, X,
@@ -33,7 +33,7 @@ export default function Landing() {
             <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-accent">
               <Bus size={22} />
             </span>
-            <span className="font-heading text-lg font-extrabold tracking-tight text-primary">HS Transportation</span>
+            <span className="font-heading text-lg font-extrabold tracking-tight text-primary">HS School Bus</span>
           </a>
           <nav className="hidden items-center gap-8 md:flex">
             <a href="#top" className="text-sm font-medium text-text-secondary hover:text-primary">Home</a>
@@ -185,11 +185,11 @@ export default function Landing() {
           <div className="flex items-center gap-2.5">
             <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 text-accent"><Bus size={18} /></span>
             <div>
-              <p className="font-heading font-bold">HS Transportation</p>
+              <p className="font-heading font-bold">HS School Bus</p>
               <p className="text-xs text-white/60">Smart school bus management.</p>
             </div>
           </div>
-          <p className="text-xs text-white/60">© 2025 HS Transportation. All rights reserved.</p>
+          <p className="text-xs text-white/60">© 2025 HS School Bus. All rights reserved.</p>
         </div>
       </footer>
     </div>

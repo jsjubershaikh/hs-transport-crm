@@ -1,4 +1,4 @@
-import { Bus, MapPin, Phone, Mail } from 'lucide-react';
+﻿import { Bus, MapPin, Phone, Mail } from 'lucide-react';
 import { formatCurrency, formatDateLong } from '../utils/format.js';
 import { MONTH_LABELS } from '../utils/constants.js';
 
@@ -26,7 +26,7 @@ export default function BulkReceiptTemplate({ receipt, settings }) {
         </div>
         <div className="flex-1">
           <h2 className="font-heading text-lg font-extrabold uppercase tracking-tight text-primary">
-            {company.name || 'HS Transportation'}
+            {company.name || 'HS School Bus'}
           </h2>
           <p className="text-xs text-text-secondary">School Bus Services</p>
         </div>
