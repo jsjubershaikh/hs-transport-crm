@@ -73,7 +73,7 @@ async function bootstrap() {
   server.listen(env.PORT, () => {
     console.log(`🚀 Server listening on http://localhost:${env.PORT}`);
     console.log(`   API base:  http://localhost:${env.PORT}/api`);
-    console.log(`   CORS origin: ${env.CLIENT_ORIGIN}`);
+    console.log(`   CORS origins: ${env.CLIENT_ORIGINS.join(', ')}`);
     console.log(`   Mode: ${env.NODE_ENV}`);
   });
 
