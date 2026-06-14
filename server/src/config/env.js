@@ -12,10 +12,35 @@ function required(key) {
   return v;
 }
 
-// CLIENT_ORIGIN may be a single origin or a comma-separated list (handy when
-// Vite falls back to another port, e.g. 5174, if 5173 is taken).
+// CLIENT_ORIGIN may be a single origin or a comma-separated list.
+// We clean them and automatically append the www/non-www counterpart.
 const rawOrigins = process.env.CLIENT_ORIGIN || 'http://localhost:5173';
-const originList = rawOrigins.split(',').map((o) => o.trim()).filter(Boolean);
+const parsedOrigins = rawOrigins
+  .split(',')
+  .map((o) => o.trim().replace(/,$/, '').replace(/\/$/, ''))
+  .filter(Boolean);
+
+const autoOrigins = [];
+for (const origin of parsedOrigins) {
+  try {
+    const url = new URL(origin);
+    if (url.hostname.startsWith('www.')) {
+      const nonWww = `${url.protocol}//${url.hostname.substring(4)}${url.port ? ':' + url.port : ''}`;
+      if (!parsedOrigins.includes(nonWww)) {
+        autoOrigins.push(nonWww);
+      }
+    } else if (!url.hostname.match(/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/) && url.hostname !== 'localhost') {
+      const www = `${url.protocol}//www.${url.hostname}${url.port ? ':' + url.port : ''}`;
+      if (!parsedOrigins.includes(www)) {
+        autoOrigins.push(www);
+      }
+    }
+  } catch (e) {
+    // Ignore invalid URLs
+  }
+}
+
+const originList = [...parsedOrigins, ...autoOrigins];
 
 export const env = {
   PORT: process.env.PORT || 5000,
