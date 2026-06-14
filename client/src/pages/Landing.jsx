@@ -1,4 +1,4 @@
-﻿import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   Bus, Wallet, Route as RouteIcon, MessageCircle, CalendarRange, ShieldCheck, FileText,
   ArrowRight, Star, MapPin, Phone, Mail, Menu, X,
@@ -15,14 +15,25 @@ const FEATURES = [
 ];
 
 const STATS = [
-  { value: '500+', label: 'Students Managed' },
+  { value: '100+', label: 'Students Managed' },
   { value: '4.9★', label: 'Satisfaction' },
   { value: '99.9%', label: 'Uptime' },
-  { value: '20+', label: 'Routes Supported' },
+  { value: '5+', label: 'Routes Managed' },
 ];
 
 export default function Landing() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' });
+
+  const handleContactSubmit = (e) => {
+    e.preventDefault();
+    if (!contactForm.name || !contactForm.email || !contactForm.message) return;
+    const subject = encodeURIComponent(`Inquiry from ${contactForm.name}`);
+    const body = encodeURIComponent(
+      `Name: ${contactForm.name}\nEmail: ${contactForm.email}\n\nMessage:\n${contactForm.message}`
+    );
+    window.location.href = `mailto:huzaifatransportation@gmail.com?subject=${subject}&body=${body}`;
+  };
 
   return (
     <div className="min-h-screen bg-bg text-text-primary">
@@ -161,20 +172,39 @@ export default function Landing() {
               <div className="flex items-center gap-3"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/5 text-primary"><Mail size={18} /></span><span className="text-sm text-text-secondary">huzaifatransportation@gmail.com</span></div>
             </div>
           </div>
-          <form className="card space-y-4 p-6" onSubmit={(e) => e.preventDefault()}>
+          <form className="card space-y-4 p-6" onSubmit={handleContactSubmit}>
             <div>
               <label className="label">Name</label>
-              <input className="input" placeholder="Your name" />
+              <input
+                className="input"
+                placeholder="Your name"
+                value={contactForm.name}
+                onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
+                required
+              />
             </div>
             <div>
               <label className="label">Email</label>
-              <input className="input" type="email" placeholder="you@example.com" />
+              <input
+                className="input"
+                type="email"
+                placeholder="you@example.com"
+                value={contactForm.email}
+                onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
+                required
+              />
             </div>
             <div>
               <label className="label">Message</label>
-              <textarea className="input h-28 resize-none py-2" placeholder="How can we help?" />
+              <textarea
+                className="input h-28 resize-none py-2"
+                placeholder="How can we help?"
+                value={contactForm.message}
+                onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
+                required
+              />
             </div>
-            <button className="btn btn-primary btn-md w-full">Send Message</button>
+            <button type="submit" className="btn btn-primary btn-md w-full">Send Message</button>
           </form>
         </div>
       </section>
