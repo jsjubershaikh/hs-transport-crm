@@ -13,7 +13,7 @@ export const MONTH_LABELS = {
 };
 
 export const CLASSES = [
-  'Jr KG', 'Sr KG', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Alumni',
+  'Jr KG', 'Sr KG', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', 'NEET', 'Paramedical', 'Alumni',
 ];
 
 export const SECTIONS = ['A', 'B', 'C', 'D'];
@@ -48,6 +48,10 @@ export const PROMOTION_MAP = {
   '7': '8',
   '8': '9',
   '9': '10',
-  '10': 'Alumni',
+  '10': '11',
+  '11': '12',
+  '12': 'Alumni',
+  'NEET': 'Alumni',
+  'Paramedical': 'Alumni',
   Alumni: 'Alumni',
 };

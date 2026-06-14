@@ -7,7 +7,7 @@ export const MONTH_LABELS = {
   Dec: 'December', Jan: 'January', Feb: 'February', Mar: 'March', Apr: 'April',
 };
 
-export const CLASSES = ['Jr KG', 'Sr KG', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Alumni'];
+export const CLASSES = ['Jr KG', 'Sr KG', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', 'NEET', 'Paramedical', 'Alumni'];
 
 export const SECTIONS = ['A', 'B', 'C', 'D'];
 
@@ -29,12 +29,14 @@ export const CLASS_GROUPS = [
   { key: 'srkg', label: 'Sr KG', match: (c) => c === 'Sr KG' },
   { key: '1-5', label: 'Class 1–5', match: (c) => ['1', '2', '3', '4', '5'].includes(c) },
   { key: '6-10', label: 'Class 6–10', match: (c) => ['6', '7', '8', '9', '10'].includes(c) },
+  { key: '11-12-higher', label: 'Higher & Coaching', match: (c) => ['11', '12', 'NEET', 'Paramedical'].includes(c) },
 ];
 
 // Promotion map shown on the Academic Year page (display only — server enforces).
 export const PROMOTION_MAP = {
   'Jr KG': 'Sr KG', 'Sr KG': '1', '1': '2', '2': '3', '3': '4', '4': '5', '5': '6',
-  '6': '7', '7': '8', '8': '9', '9': '10', '10': 'Alumni',
+  '6': '7', '7': '8', '8': '9', '9': '10', '10': '11', '11': '12', '12': 'Alumni',
+  'NEET': 'Alumni', 'Paramedical': 'Alumni',
 };
 
 // Sidebar navigation, filtered by role in the Sidebar component.
