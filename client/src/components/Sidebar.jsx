@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard, GraduationCap, Wallet, ReceiptText, Map,
-  UserCog, BarChart3, Archive, CalendarRange, Settings, LogOut, Bus as BusLogo,
+  UserCog, BarChart3, Archive, CalendarRange, Settings, LogOut,
   ChevronLeft, X, Users2, TrendingUp,
 } from 'lucide-react';
 import { NAV_ITEMS } from '../utils/constants.js';
@@ -55,15 +55,14 @@ export default function Sidebar() {
   const Inner = ({ onNavigate, showCollapse, collapsed }) => (
     <div className="flex h-full flex-col bg-sidebar-bg text-white">
       {/* Logo */}
-      <div className="flex items-center gap-2.5 px-4 py-4">
-        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/10 text-accent">
-          <BusLogo size={20} />
-        </span>
-        {!collapsed && (
-          <span className="font-heading text-base font-extrabold leading-tight tracking-tight">
-            HS<span className="block text-[11px] font-medium text-white/50">School Bus CRM</span>
-          </span>
-        )}
+      <div className="flex items-center gap-2 px-4 py-4">
+        <img
+          src="/logo.png"
+          alt="HS School Bus"
+          className={`object-contain brightness-0 invert transition-all ${
+            collapsed ? 'h-8 w-8' : 'h-9 w-auto max-w-[140px]'
+          }`}
+        />
         {showCollapse && (
           <button onClick={toggleSidebar} className="ml-auto hidden rounded-lg p-1 text-white/50 hover:bg-white/10 hover:text-white lg:block" aria-label="Collapse sidebar">
             <ChevronLeft size={18} className={`transition-transform ${collapsed ? 'rotate-180' : ''}`} />

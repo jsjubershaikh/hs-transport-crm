@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import {
-  Bus, Wallet, Route as RouteIcon, MessageCircle, CalendarRange, ShieldCheck, FileText,
+  Wallet, Route as RouteIcon, MessageCircle, CalendarRange, ShieldCheck, FileText,
   ArrowRight, Star, MapPin, Phone, Mail, Menu, X,
 } from 'lucide-react';
 import { useState } from 'react';
@@ -40,11 +40,8 @@ export default function Landing() {
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-border/70 bg-white/80 backdrop-blur-lg">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5">
-          <a href="#top" className="flex items-center gap-2.5">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-accent">
-              <Bus size={22} />
-            </span>
-            <span className="font-heading text-lg font-extrabold tracking-tight text-primary">HS School Bus</span>
+          <a href="#top" className="flex items-center gap-2">
+            <img src="/logo.png" alt="HS School Bus" className="h-10 w-auto object-contain" />
           </a>
           <nav className="hidden items-center gap-8 md:flex">
             <a href="#top" className="text-sm font-medium text-text-secondary hover:text-primary">Home</a>
@@ -104,7 +101,7 @@ export default function Landing() {
             <div className="animate-float rounded-2xl border border-border bg-white p-5 shadow-lift">
               <div className="mb-4 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-accent"><Bus size={16} /></span>
+                  <img src="/logo.png" alt="HS School Bus" className="h-7 w-auto object-contain" />
                   <span className="font-heading text-sm font-bold">Dashboard</span>
                 </div>
                 <span className="badge badge-active">Live</span>
@@ -212,8 +209,8 @@ export default function Landing() {
       {/* Footer */}
       <footer className="border-t border-border bg-primary py-10 text-white">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 sm:flex-row">
-          <div className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 text-accent"><Bus size={18} /></span>
+          <div className="flex items-center gap-3">
+            <img src="/logo.png" alt="HS School Bus" className="h-10 w-auto object-contain brightness-0 invert" />
             <div>
               <p className="font-heading font-bold">HS School Bus</p>
               <p className="text-xs text-white/60">Smart school bus management.</p>
