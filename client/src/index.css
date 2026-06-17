@@ -108,16 +108,21 @@
    Print styles — hide the app chrome, show only the receipt (A5).
 --------------------------------------------------------------------------- */
 @media print {
-  @page { size: A5; margin: 10mm; }
-  body { background: #fff !important; }
+  @page { size: A5; margin: 0; }
+  body { background: #fff !important; margin: 0; padding: 0; }
   .no-print { display: none !important; }
   .print-only { display: block !important; }
   .print-area {
     position: absolute;
-    inset: 0;
-    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140mm;
+    max-width: 140mm;
     box-shadow: none !important;
     border: none !important;
+    background: white !important;
+    padding: 0 !important;
   }
 }
 .print-only { display: none; }

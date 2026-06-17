@@ -1,7 +1,6 @@
-﻿/**
+/**
  * receiptPdf.js
  * Generates a PDF from the rendered receipt DOM node using html2canvas + jsPDF.
- * Returns a Blob so callers can download or open WhatsApp.
  */
 
 /**
@@ -15,29 +14,51 @@ export async function generateReceiptPdf(receiptNumber = 'receipt') {
   const el = document.getElementById('receipt-print-area');
   if (!el) throw new Error('Receipt element not found');
 
-  // Render at 2× scale for crisp output
-  const canvas = await html2canvas(el, {
-    scale: 2,
-    useCORS: true,
-    backgroundColor: '#ffffff',
-    logging: false,
-  });
+  // Enforce absolute dimensions during html2canvas capture to prevent responsive stretch
+  const originalWidth = el.style.width;
+  const originalMinWidth = el.style.minWidth;
+  const originalMaxWidth = el.style.maxWidth;
+  const originalShadow = el.style.boxShadow;
+  const originalBorder = el.style.border;
 
-  const imgData = canvas.toDataURL('image/png');
-  const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a5' });
+  el.style.width = '420px';
+  el.style.minWidth = '420px';
+  el.style.maxWidth = '420px';
+  el.style.boxShadow = 'none';
+  el.style.border = 'none';
 
-  const pageW = pdf.internal.pageSize.getWidth();
-  const pageH = pdf.internal.pageSize.getHeight();
+  try {
+    // Render at 2× scale for crisp output
+    const canvas = await html2canvas(el, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#ffffff',
+      logging: false,
+    });
 
-  // Fit image to A5 width while preserving aspect ratio
-  const imgW = pageW;
-  const imgH = (canvas.height * imgW) / canvas.width;
-  const yOffset = imgH < pageH ? (pageH - imgH) / 2 : 0;
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a5' });
 
-  pdf.addImage(imgData, 'PNG', 0, yOffset, imgW, Math.min(imgH, pageH));
+    const pageW = pdf.internal.pageSize.getWidth();
+    const pageH = pdf.internal.pageSize.getHeight();
 
-  const filename = `receipt-${receiptNumber}.pdf`;
-  return { pdf, filename };
+    // Fit image to A5 width while preserving aspect ratio
+    const imgW = pageW;
+    const imgH = (canvas.height * imgW) / canvas.width;
+    const yOffset = imgH < pageH ? (pageH - imgH) / 2 : 0;
+
+    pdf.addImage(imgData, 'PNG', 0, yOffset, imgW, Math.min(imgH, pageH));
+
+    const filename = `receipt-${receiptNumber}.pdf`;
+    return { pdf, filename };
+  } finally {
+    // Restore original styles
+    el.style.width = originalWidth;
+    el.style.minWidth = originalMinWidth;
+    el.style.maxWidth = originalMaxWidth;
+    el.style.boxShadow = originalShadow;
+    el.style.border = originalBorder;
+  }
 }
 
 /**
@@ -50,7 +71,6 @@ export async function downloadReceiptPdf(receiptNumber) {
 
 /**
  * Download the PDF then open WhatsApp with a pre-filled message.
- * The user attaches the downloaded file themselves (browser security prevents auto-attach).
  */
 export async function shareReceiptOnWhatsApp({ receiptNumber, studentName, month, amount, mobile, companyName }) {
   // 1. Generate + download the PDF first
