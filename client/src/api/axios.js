@@ -19,12 +19,17 @@ let onUnauthorized = null;
 /** Called by AuthContext to keep the token in sync for the interceptor. */
 export function setAuthToken(token) {
   authToken = token;
-  if (token) localStorage.setItem('ht_token', token);
-  else localStorage.removeItem('ht_token');
+  // sessionStorage is cleared when the browser tab/window is closed,
+  // so the user is always logged out on next browser open.
+  if (token) sessionStorage.setItem('ht_token', token);
+  else {
+    sessionStorage.removeItem('ht_token');
+    localStorage.removeItem('ht_token'); // clean up old persisted tokens
+  }
 }
 
 export function getStoredToken() {
-  return authToken || localStorage.getItem('ht_token');
+  return authToken || sessionStorage.getItem('ht_token');
 }
 
 /** Register a callback invoked on a 401 so AuthContext can reset state. */
