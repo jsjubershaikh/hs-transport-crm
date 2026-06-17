@@ -69,19 +69,3 @@ export async function createReceipt({ feeRecord, student, amount, year, generate
   );
   return receipt;
 }
-
-/**
- * Generate the next manual receipt number for a year, e.g. M-HT-2025-0042.
- * @param {number} year   - calendar year (academic year's start year)
- */
-export async function nextManualReceiptNumber(year, { session } = {}) {
-  const prefix = await getPrefix();
-  const counter = await Counter.findByIdAndUpdate(
-    `manual-receipt-${year}`,
-    { $inc: { seq: 1 } },
-    { new: true, upsert: true, session }
-  );
-  const padded = String(counter.seq).padStart(4, '0');
-  return `M-${prefix}-${year}-${padded}`;
-}
-

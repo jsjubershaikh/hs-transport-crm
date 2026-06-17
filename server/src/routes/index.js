@@ -12,7 +12,6 @@ import reportRoutes from './reportRoutes.js';
 import archiveRoutes from './archiveRoutes.js';
 import settingsRoutes from './settingsRoutes.js';
 import dashboardRoutes from './dashboardRoutes.js';
-import manualReceiptRoutes from './manualReceiptRoutes.js';
 
 const api = Router();
 
@@ -27,7 +26,6 @@ api.use('/buses', busRoutes);
 api.use('/users', userRoutes);
 api.use('/academic-years', academicYearRoutes);
 api.use('/receipts', receiptRoutes);
-api.use('/manual-receipts', manualReceiptRoutes);
 api.use('/notifications', notificationRoutes);
 api.use('/reports', reportRoutes);
 api.use('/archive', archiveRoutes);
