@@ -25,10 +25,9 @@ export const FEE_STATUS = ['paid', 'partial', 'pending'];
 // Class grouping tabs used on the Student List page.
 export const CLASS_GROUPS = [
   { key: 'all', label: 'All', match: () => true },
-  { key: 'jrkg', label: 'Jr KG', match: (c) => c === 'Jr KG' },
-  { key: 'srkg', label: 'Sr KG', match: (c) => c === 'Sr KG' },
-  { key: '1-5', label: 'Class 1–5', match: (c) => ['1', '2', '3', '4', '5'].includes(c) },
-  { key: '6-10', label: 'Class 6–10', match: (c) => ['6', '7', '8', '9', '10'].includes(c) },
+  { key: 'kg', label: 'KG', match: (c) => c === 'Jr KG' || c === 'Sr KG' },
+  { key: '1-4', label: 'Class 1–4', match: (c) => ['1', '2', '3', '4'].includes(c) },
+  { key: '5-10', label: 'Class 5–10', match: (c) => ['5', '6', '7', '8', '9', '10'].includes(c) },
   { key: '11-12-higher', label: 'Higher & Coaching', match: (c) => ['11', '12', 'NEET', 'Paramedical'].includes(c) },
 ];
 
