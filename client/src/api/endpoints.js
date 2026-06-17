@@ -127,3 +127,13 @@ export const settingsApi = {
   update: (body) => api.put('/settings', body).then(unwrap),
   activityLogs: (params) => api.get('/settings/activity-logs', { params }).then(full),
 };
+
+// ---- Manual Receipts ----
+export const manualReceiptApi = {
+  list: (params) => api.get('/manual-receipts', { params }).then(full),
+  get: (id) => api.get(`/manual-receipts/${id}`).then(unwrap),
+  create: (body) => api.post('/manual-receipts', body).then(unwrap),
+  update: (id, body) => api.put(`/manual-receipts/${id}`, body).then(unwrap),
+  remove: (id) => api.delete(`/manual-receipts/${id}`).then(unwrap),
+};
+

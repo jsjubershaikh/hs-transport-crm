@@ -18,6 +18,7 @@ import Alumni from './pages/Alumni.jsx';
 import AcademicYears from './pages/AcademicYears.jsx';
 import Reports from './pages/Reports.jsx';
 import Settings from './pages/Settings.jsx';
+import ManualReceipts from './pages/ManualReceipts.jsx';
 
 export default function App() {
   const { loading } = useAuth();
@@ -52,6 +53,7 @@ export default function App() {
 
         <Route path="fees" element={<FeeManagement />} />
         <Route path="daily-collection" element={<DailyCollection />} />
+        <Route path="manual-receipts" element={<RequireRole role="superadmin"><ManualReceipts /></RequireRole>} />
         {/* /receipts redirects to /daily-collection (Receipts tab) */}
         <Route path="receipts" element={<Navigate to="/app/daily-collection" replace />} />
         <Route path="notifications" element={<Notifications />} />
