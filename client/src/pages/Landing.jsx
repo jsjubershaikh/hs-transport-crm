@@ -40,8 +40,9 @@ export default function Landing() {
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-border/70 bg-white/80 backdrop-blur-lg">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5">
-          <a href="#top" className="flex items-center gap-2">
-            <img src="/logo.png" alt="HS School Bus" className="h-10 w-auto object-contain" />
+          <a href="#top" className="flex items-center gap-2.5">
+            <img src="/logo.png" alt="HS School Bus" className="h-10 w-10 object-contain rounded-lg" />
+            <span className="font-heading text-lg font-extrabold tracking-tight text-primary">HS School Bus</span>
           </a>
           <nav className="hidden items-center gap-8 md:flex">
             <a href="#top" className="text-sm font-medium text-text-secondary hover:text-primary">Home</a>
@@ -210,7 +211,7 @@ export default function Landing() {
       <footer className="border-t border-border bg-primary py-10 text-white">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 sm:flex-row">
           <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="HS School Bus" className="h-10 w-auto object-contain brightness-0 invert" />
+            <img src="/logo.png" alt="HS School Bus" className="h-10 w-10 object-contain rounded-lg" />
             <div>
               <p className="font-heading font-bold">HS School Bus</p>
               <p className="text-xs text-white/60">Smart school bus management.</p>

@@ -8,8 +8,9 @@ export default function AuthLayout({ children }) {
         <img
           src="/logo.png"
           alt="HS School Bus"
-          className="h-14 w-auto object-contain drop-shadow-lg"
+          className="h-12 w-12 object-contain rounded-xl"
         />
+        <span className="font-heading text-xl font-extrabold tracking-tight text-white">HS School Bus</span>
       </Link>
       <div className="w-full max-w-md animate-scale-in">{children}</div>
       <p className="mt-6 text-xs text-white/50">© 2025 HS School Bus</p>
