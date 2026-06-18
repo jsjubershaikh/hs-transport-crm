@@ -93,6 +93,15 @@ export const receiptApi = {
   markPrinted: (id) => api.post(`/receipts/${id}/printed`).then(unwrap),
 };
 
+// ---- Manual Receipts (superadmin) ----
+export const manualReceiptApi = {
+  list: (params) => api.get('/manual-receipts', { params }).then(full),
+  get: (id) => api.get(`/manual-receipts/${id}`).then(unwrap),
+  create: (body) => api.post('/manual-receipts', body).then(unwrap),
+  markPrinted: (id) => api.post(`/manual-receipts/${id}/printed`).then(unwrap),
+  remove: (id) => api.delete(`/manual-receipts/${id}`).then(unwrap),
+};
+
 // ---- Notifications ----
 export const notificationApi = {
   list: (params) => api.get('/notifications', { params }).then(full),

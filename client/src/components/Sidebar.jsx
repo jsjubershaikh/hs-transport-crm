@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard, GraduationCap, Wallet, ReceiptText, Map,
   UserCog, BarChart3, Archive, CalendarRange, Settings, LogOut,
-  ChevronLeft, X, Users2, TrendingUp,
+  ChevronLeft, X, Users2, TrendingUp, FilePlus,
 } from 'lucide-react';
 import { NAV_ITEMS } from '../utils/constants.js';
 import { useAuth } from '../context/AuthContext.jsx';
@@ -11,7 +11,7 @@ import Avatar from './Avatar.jsx';
 
 const ICONS = {
   LayoutDashboard, GraduationCap, Wallet, ReceiptText, Map,
-  UserCog, BarChart3, Archive, CalendarRange, Settings, Users2, TrendingUp,
+  UserCog, BarChart3, Archive, CalendarRange, Settings, Users2, TrendingUp, FilePlus,
 };
 
 export default function Sidebar() {
@@ -54,24 +54,8 @@ export default function Sidebar() {
 
   const Inner = ({ onNavigate, showCollapse, collapsed }) => (
     <div className="flex h-full flex-col bg-sidebar-bg text-white">
-      {/* Logo */}
-      <div className="flex items-center gap-2 px-4 py-4">
-        <img
-          src="/logo.png"
-          alt="HS School Bus"
-          className={`object-contain brightness-0 invert transition-all ${
-            collapsed ? 'h-8 w-8' : 'h-9 w-auto max-w-[140px]'
-          }`}
-        />
-        {showCollapse && (
-          <button onClick={toggleSidebar} className="ml-auto hidden rounded-lg p-1 text-white/50 hover:bg-white/10 hover:text-white lg:block" aria-label="Collapse sidebar">
-            <ChevronLeft size={18} className={`transition-transform ${collapsed ? 'rotate-180' : ''}`} />
-          </button>
-        )}
-      </div>
-
       {/* User */}
-      <div className={`mx-3 mb-2 flex items-center gap-3 rounded-xl bg-white/5 p-3 ${collapsed ? 'justify-center' : ''}`}>
+      <div className={`mx-3 mb-2 mt-3 flex items-center gap-3 rounded-xl bg-white/5 p-3 ${collapsed ? 'justify-center' : ''}`}>
         <Avatar src={user?.photo} name={user?.name} size="sm" />
         {!collapsed && (
           <div className="min-w-0">
@@ -81,7 +65,17 @@ export default function Sidebar() {
             </span>
           </div>
         )}
+        {showCollapse && !collapsed && (
+          <button onClick={toggleSidebar} className="ml-auto hidden shrink-0 rounded-lg p-1 text-white/50 hover:bg-white/10 hover:text-white lg:block" aria-label="Collapse sidebar">
+            <ChevronLeft size={18} className="transition-transform" />
+          </button>
+        )}
       </div>
+      {showCollapse && collapsed && (
+        <button onClick={toggleSidebar} className="mx-auto mb-2 hidden rounded-lg p-1 text-white/50 hover:bg-white/10 hover:text-white lg:block" aria-label="Expand sidebar">
+          <ChevronLeft size={18} className="rotate-180 transition-transform" />
+        </button>
+      )}
 
       <NavList onNavigate={onNavigate} collapsed={collapsed} />
 

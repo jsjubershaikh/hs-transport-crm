@@ -44,6 +44,7 @@ export const NAV_ITEMS = [
   { to: '/app/students',           label: 'Students',            icon: 'GraduationCap',   roles: ['superadmin', 'subadmin'] },
   { to: '/app/fees',               label: 'Fee Management',      icon: 'Wallet',          roles: ['superadmin', 'subadmin'] },
   { to: '/app/daily-collection',   label: 'Daily Collection',    icon: 'TrendingUp',      roles: ['superadmin', 'subadmin'] },
+  { to: '/app/manual-receipts',    label: 'Manual Receipts',     icon: 'FilePlus',        roles: ['superadmin'] },
   { to: '/app/routes-buses',       label: 'Routes & Buses',      icon: 'Map',             roles: ['superadmin'] },
   { to: '/app/subadmins',          label: 'Sub Admins',          icon: 'UserCog',         roles: ['superadmin'] },
   { to: '/app/alumni',             label: 'Alumni & Inactive',   icon: 'Users2',          roles: ['superadmin'] },

@@ -36,6 +36,22 @@ export async function nextReceiptNumber(year, { session } = {}) {
 }
 
 /**
+ * Generate the next MANUAL receipt number for a year, e.g. HT-M-2025-0007.
+ * Uses a separate counter so manual receipts never consume or collide with the
+ * auto-generated receipt sequence, and carry a visible "-M-" marker.
+ */
+export async function nextManualReceiptNumber(year, { session } = {}) {
+  const prefix = await getPrefix();
+  const counter = await Counter.findByIdAndUpdate(
+    `manual-receipt-${year}`,
+    { $inc: { seq: 1 } },
+    { new: true, upsert: true, session }
+  );
+  const padded = String(counter.seq).padStart(4, '0');
+  return `${prefix}-M-${year}-${padded}`;
+}
+
+/**
  * Create a Receipt document tied to a paid/partial fee record.
  *
  * @param {object} params

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Navigate, Link } from 'react-router-dom';
-import { Eye, EyeOff, Loader2, LogIn, ArrowLeft } from 'lucide-react';
+import { Eye, EyeOff, Loader2, LogIn, ArrowLeft, ShieldCheck } from 'lucide-react';
 import AuthLayout from '../layouts/AuthLayout.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useUI } from '../context/UIContext.jsx';
@@ -44,15 +44,18 @@ export default function Login() {
 
   return (
     <AuthLayout>
-      <div className="card p-7">
-        <div className="mb-6">
-          <Link to="/" className="mb-4 flex items-center gap-1.5 text-sm font-medium text-text-secondary hover:text-primary">
-            <ArrowLeft size={16} /> Back to home
-          </Link>
-          <div className="text-center">
-            <h1 className="font-heading text-2xl font-bold text-text-primary">Admin Login</h1>
-            <p className="mt-1 text-sm text-text-secondary">Sign in to manage your transport CRM</p>
-          </div>
+      <div className="card p-7 shadow-lift sm:p-8">
+        <Link to="/" className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-text-secondary transition-colors hover:text-primary">
+          <ArrowLeft size={16} /> Back to home
+        </Link>
+        <div className="mb-7">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/5 px-3 py-1 text-xs font-semibold text-primary">
+            <ShieldCheck size={13} /> Secure admin access
+          </span>
+          <h1 className="mt-4 font-heading text-2xl font-extrabold tracking-tight text-text-primary sm:text-3xl">
+            Welcome back
+          </h1>
+          <p className="mt-1.5 text-sm text-text-secondary">Sign in to manage your transport CRM.</p>
         </div>
         <form onSubmit={onSubmit} className={error ? 'animate-shake' : ''} noValidate>
           <div className="mb-4">
@@ -94,13 +97,15 @@ export default function Login() {
 
           {error && <p className="field-error mb-2">{error}</p>}
 
-          <button type="submit" className="btn btn-primary btn-lg mt-4 w-full" disabled={submitting}>
+          <button type="submit" className="btn btn-primary btn-lg mt-5 w-full" disabled={submitting}>
             {submitting ? <Loader2 size={18} className="animate-spin" /> : <LogIn size={18} />}
             {submitting ? 'Signing in…' : 'Sign In'}
           </button>
         </form>
 
-
+        <p className="mt-6 text-center text-xs text-text-secondary">
+          Credentials are provided by your administrator.
+        </p>
       </div>
     </AuthLayout>
   );

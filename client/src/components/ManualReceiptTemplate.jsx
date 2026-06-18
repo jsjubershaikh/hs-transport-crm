@@ -2,16 +2,15 @@ import { formatCurrency, formatDateLong } from '../utils/format.js';
 import { MONTH_LABELS } from '../utils/constants.js';
 
 /**
- * Bulk/advance receipt — shows all months covered by one lump payment.
- * Mirrors the downloadable PDF (utils/receiptPdf.js) so view, print, and PDF match.
- * Used inside ReceiptModal when receiptType === 'bulk'.
+ * On-screen manual receipt — mirrors the downloadable PDF (utils/receiptPdf.js)
+ * so view, print, and PDF all match. Wrap in `.print-area` for print isolation.
  */
-export default function BulkReceiptTemplate({ receipt, settings }) {
+export default function ManualReceiptTemplate({ receipt, settings }) {
   if (!receipt) return null;
-  const student = receipt.studentId || {};
+  const student = receipt.studentId || receipt.studentSnapshot || {};
   const company = settings?.company || {};
   const receiptCfg = settings?.receipt || {};
-  const bulkDetails = receipt.bulkDetails || [];
+  const items = receipt.items || [];
   const logoSrc = company.logo || '/logo.png';
   const classVal = `${student.class || ''}${student.section ? ' - ' + student.section : ''}`.trim();
   const contact = [company.phone, company.email].filter(Boolean).join('   •   ');
@@ -40,9 +39,9 @@ export default function BulkReceiptTemplate({ receipt, settings }) {
           </div>
 
           <div className="flex flex-col items-end gap-1.5">
-            <span className="text-[11px] font-bold uppercase tracking-wide">Bulk Receipt</span>
+            <span className="text-[11px] font-bold uppercase tracking-wide">Manual Receipt</span>
             <span className="rounded-full bg-accent px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white">
-              Advance
+              Manual
             </span>
           </div>
         </div>
@@ -58,7 +57,9 @@ export default function BulkReceiptTemplate({ receipt, settings }) {
           </div>
           <div className="text-right">
             <p className="text-[10px] font-semibold uppercase tracking-wide text-text-secondary">Date Issued</p>
-            <p className="text-sm font-bold text-text-primary">{formatDateLong(receipt.generatedAt)}</p>
+            <p className="text-sm font-bold text-text-primary">
+              {formatDateLong(receipt.paymentDate || receipt.generatedAt)}
+            </p>
           </div>
         </div>
 
@@ -70,54 +71,51 @@ export default function BulkReceiptTemplate({ receipt, settings }) {
           <Field label="Student" value={student.name} />
           <Field label="Father's Name" value={student.fatherName} />
           <Field label="Class / Section" value={classVal} />
-          <Field label="Months Covered" value={bulkDetails.length} />
+          <Field label="Payment Mode" value={(receipt.paymentMode || '—').toUpperCase()} />
         </div>
 
-        {/* Month-wise breakdown */}
-        <h4 className="mb-2 mt-5 text-[10px] font-bold uppercase tracking-wider text-text-secondary">
-          Month-wise Breakdown
-        </h4>
-        {bulkDetails.length > 0 && (
-          <div className="overflow-hidden rounded-lg border border-border">
-            <table className="w-full text-xs">
-              <thead>
-                <tr className="border-b border-border bg-slate-50 text-left text-[9px] font-bold uppercase tracking-wider text-text-secondary">
-                  <th className="px-3 py-2">Month</th>
-                  <th className="px-3 py-2 text-right">Amount</th>
-                  <th className="px-3 py-2 text-right">Status</th>
+        {/* Line items */}
+        <h4 className="mb-2 mt-5 text-[10px] font-bold uppercase tracking-wider text-text-secondary">Receipt Details</h4>
+        <div className="overflow-hidden rounded-lg border border-border">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b border-border bg-slate-50 text-left text-[9px] font-bold uppercase tracking-wider text-text-secondary">
+                <th className="px-3 py-2">Description</th>
+                <th className="px-3 py-2 text-right">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {items.map((it, i) => (
+                <tr key={i} className="border-b border-border/50 last:border-0">
+                  <td className="px-3 py-2 font-medium text-text-primary">
+                    {it.description}
+                    {it.month && <span className="text-text-secondary"> ({MONTH_LABELS[it.month] || it.month})</span>}
+                  </td>
+                  <td className="px-3 py-2 text-right font-mono font-semibold text-text-primary">{formatCurrency(it.amount)}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {bulkDetails.map((d, i) => (
-                  <tr key={i} className="border-b border-border/50 last:border-0">
-                    <td className="px-3 py-2 font-medium text-text-primary">{MONTH_LABELS[d.month] || d.month}</td>
-                    <td className="px-3 py-2 text-right font-mono font-semibold text-success">{formatCurrency(d.amount)}</td>
-                    <td className="px-3 py-2 text-right">
-                      <span className="text-[9px] font-bold uppercase tracking-wider text-success">Paid</span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Summary */}
+        {receipt.collectedBy && (
+          <div className="mt-3 flex items-center justify-between text-xs">
+            <span className="text-text-secondary">Collected By</span>
+            <span className="font-mono text-text-primary">{receipt.collectedBy}</span>
           </div>
         )}
 
-        {/* Summary rows */}
-        <div className="mt-3 space-y-1.5 text-xs">
-          {receipt.collectedBy && <Row label="Collected By" value={receipt.collectedBy} />}
-          {receipt.paymentMode && <Row label="Payment Mode" value={String(receipt.paymentMode).toUpperCase()} />}
-        </div>
-
         {/* Total paid highlight */}
         <div className="mt-4 flex items-center justify-between rounded-lg bg-primary px-4 py-3 text-white">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-300">Total Paid</span>
+          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-300">Total</span>
           <span className="font-mono text-lg font-extrabold">{formatCurrency(receipt.amount)}</span>
         </div>
 
         {/* Footer: note + signature */}
         <div className="mt-6 flex items-end justify-between gap-4">
           <p className="max-w-[55%] text-[10px] italic leading-relaxed text-text-secondary">
-            {receiptCfg.footerText || 'Thank you for your bulk/advance payment. Please keep this receipt for your records.'}
+            {receipt.note || receiptCfg.footerText || 'This is a manually issued receipt. Please keep it for your records.'}
           </p>
           <div className="min-w-[110px] text-center">
             {receiptCfg.signature ? (
@@ -145,15 +143,6 @@ function Field({ label, value }) {
     <div>
       <p className="text-[9px] font-semibold uppercase tracking-wider text-text-secondary">{label}</p>
       <p className="mt-0.5 text-xs font-semibold leading-tight text-text-primary">{value || '—'}</p>
-    </div>
-  );
-}
-
-function Row({ label, value }) {
-  return (
-    <div className="flex items-center justify-between">
-      <span className="text-text-secondary">{label}</span>
-      <span className="font-mono text-text-primary">{value}</span>
     </div>
   );
 }

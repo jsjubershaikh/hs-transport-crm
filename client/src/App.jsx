@@ -11,6 +11,7 @@ import StudentList from './pages/StudentList.jsx';
 import StudentProfile from './pages/StudentProfile.jsx';
 import FeeManagement from './pages/FeeManagement.jsx';
 import DailyCollection from './pages/DailyCollection.jsx';
+import ManualReceipts from './pages/ManualReceipts.jsx';
 import Notifications from './pages/Notifications.jsx';
 import RoutesAndBuses from './pages/RoutesAndBuses.jsx';
 import SubAdmins from './pages/SubAdmins.jsx';
@@ -54,6 +55,7 @@ export default function App() {
         <Route path="daily-collection" element={<DailyCollection />} />
         {/* /receipts redirects to /daily-collection (Receipts tab) */}
         <Route path="receipts" element={<Navigate to="/app/daily-collection" replace />} />
+        <Route path="manual-receipts" element={<RequireRole role="superadmin"><ManualReceipts /></RequireRole>} />
         <Route path="notifications" element={<Notifications />} />
 
         <Route path="routes-buses" element={<RequireRole role="superadmin"><RoutesAndBuses /></RequireRole>} />
