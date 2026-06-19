@@ -6,13 +6,13 @@ import { studentApi } from '../api/endpoints.js';
 import { useData } from '../context/DataContext.jsx';
 import { useUI } from '../context/UIContext.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
-import { CLASSES, SECTIONS, GENDERS } from '../utils/constants.js';
+import { CLASSES, SECTIONS, GENDERS, SCHOOLS } from '../utils/constants.js';
 import { uploadPhoto } from '../utils/cloudinary.js';
 
 const EMPTY = {
   photo: '', name: '', fatherName: '', motherName: '', mobile: '', altMobile: '', address: '',
   gender: 'Male', dob: '', class: '', section: 'A', school: '', academicYearId: '',
-  routeId: '', busId: '', pickupPoint: '', dropPoint: '', monthlyFee: '',
+  routeId: '', busId: '', pickupPoint: '', monthlyFee: '',
 };
 
 export default function AddStudent() {
@@ -70,8 +70,7 @@ export default function AddStudent() {
     if (!form.academicYearId) e.academicYearId = 'Academic year is required';
     if (!form.routeId) e.routeId = 'Route is required';
     if (!form.busId) e.busId = 'Bus is required';
-    if (!form.pickupPoint.trim()) e.pickupPoint = 'Pickup point is required';
-    if (!form.dropPoint.trim()) e.dropPoint = 'Drop point is required';
+    if (!form.pickupPoint.trim()) e.pickupPoint = 'Pickup & drop point is required';
     if (form.monthlyFee === '' || Number(form.monthlyFee) < 0) e.monthlyFee = 'Enter a valid fee';
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -85,7 +84,13 @@ export default function AddStudent() {
     }
     setSubmitting(true);
     try {
-      const payload = { ...form, monthlyFee: Number(form.monthlyFee), dob: form.dob || undefined };
+      // Pickup & drop are the same location — keep the backend dropPoint in sync.
+      const payload = {
+        ...form,
+        dropPoint: form.pickupPoint,
+        monthlyFee: Number(form.monthlyFee),
+        dob: form.dob || undefined,
+      };
       const student = await studentApi.create(payload);
       toast.success(`${student.name} added successfully!`);
       navigate(`/app/students/${student._id}`);
@@ -188,7 +193,10 @@ export default function AddStudent() {
               </select>
             </Field>
             <Field label="School" required error={errors.school} className="lg:col-span-2">
-              <input className={inp(errors.school)} value={form.school} onChange={(e) => set('school', e.target.value)} placeholder="School name" />
+              <select className={inp(errors.school)} value={form.school} onChange={(e) => set('school', e.target.value)}>
+                <option value="">Select school</option>
+                {SCHOOLS.map((s) => <option key={s} value={s}>{s}</option>)}
+              </select>
             </Field>
             <Field label="Academic Year" required error={errors.academicYearId}>
               <select className={inp(errors.academicYearId)} value={form.academicYearId} onChange={(e) => set('academicYearId', e.target.value)}>
@@ -217,11 +225,8 @@ export default function AddStudent() {
             <Field label="Monthly Fee (₹)" required error={errors.monthlyFee}>
               <input type="number" className={inp(errors.monthlyFee)} value={form.monthlyFee} onChange={(e) => set('monthlyFee', e.target.value)} placeholder="e.g. 1500" />
             </Field>
-            <Field label="Pickup Point" required error={errors.pickupPoint}>
-              <input className={inp(errors.pickupPoint)} value={form.pickupPoint} onChange={(e) => set('pickupPoint', e.target.value)} />
-            </Field>
-            <Field label="Drop Point" required error={errors.dropPoint}>
-              <input className={inp(errors.dropPoint)} value={form.dropPoint} onChange={(e) => set('dropPoint', e.target.value)} />
+            <Field label="Pickup & Drop Point" required error={errors.pickupPoint}>
+              <input className={inp(errors.pickupPoint)} value={form.pickupPoint} onChange={(e) => set('pickupPoint', e.target.value)} placeholder="Stop name" />
             </Field>
           </div>
         </Section>

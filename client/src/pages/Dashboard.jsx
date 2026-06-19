@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Users, UserCheck, Route as RouteIcon, Bus, Wallet, AlertCircle, IndianRupee, ArrowRight,
+  Users, UserCheck, Route as RouteIcon, Bus, AlertCircle, IndianRupee, ArrowRight,
   Sparkles,
 } from 'lucide-react';
 import {
@@ -85,9 +85,6 @@ export default function Dashboard() {
     { icon: UserCheck, label: 'Active Students', value: c.activeStudents, variant: 'green', trend: 5 },
     { icon: RouteIcon, label: 'Total Routes', value: c.totalRoutes, variant: 'blue' },
     { icon: Bus, label: 'Total Buses', value: c.totalBuses, variant: 'purple' },
-    { icon: Wallet, label: 'This Month Collected', value: c.monthlyCollection, currency: true, variant: 'teal', trend: 12 },
-    { icon: AlertCircle, label: 'Pending Fees', value: c.pendingFees, currency: true, variant: 'red', trend: -4 },
-    { icon: IndianRupee, label: 'Received Fees', value: c.receivedFees, currency: true, variant: 'green', trend: 9 },
   ];
 
   const monthData       = stats.charts.monthlyCollection.map((m) => ({ ...m, label: MONTH_LABELS[m.month]?.slice(0, 3) || m.month }));

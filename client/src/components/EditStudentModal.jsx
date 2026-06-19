@@ -7,7 +7,7 @@ import { studentApi } from '../api/endpoints.js';
 import { useData } from '../context/DataContext.jsx';
 import { useUI } from '../context/UIContext.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
-import { CLASSES, SECTIONS } from '../utils/constants.js';
+import { CLASSES, SECTIONS, GENDERS, SCHOOLS } from '../utils/constants.js';
 import { uploadPhoto } from '../utils/cloudinary.js';
 
 /** Edit a student's mutable fields including photo. Subadmins can't change the route. */
@@ -25,9 +25,10 @@ export default function EditStudentModal({ open, student, onClose, onSaved }) {
         photo: student.photo || '',
         name: student.name, fatherName: student.fatherName, motherName: student.motherName,
         mobile: student.mobile, altMobile: student.altMobile || '', address: student.address || '',
+        gender: student.gender || '', dob: student.dob ? student.dob.slice(0, 10) : '',
         class: student.class, section: student.section, school: student.school,
         routeId: student.routeId?._id || student.routeId, busId: student.busId?._id || student.busId,
-        pickupPoint: student.pickupPoint, dropPoint: student.dropPoint,
+        pickupPoint: student.pickupPoint,
         monthlyFee: student.monthlyFee, status: student.status,
       });
     }
@@ -50,7 +51,12 @@ export default function EditStudentModal({ open, student, onClose, onSaved }) {
   const save = async () => {
     setSaving(true);
     try {
-      await studentApi.update(student._id, { ...form, monthlyFee: Number(form.monthlyFee) });
+      // Pickup & drop are the same location — keep the backend dropPoint in sync.
+      await studentApi.update(student._id, {
+        ...form,
+        dropPoint: form.pickupPoint,
+        monthlyFee: Number(form.monthlyFee),
+      });
       toast.success('Student updated');
       onSaved?.();
       onClose?.();
@@ -129,7 +135,20 @@ export default function EditStudentModal({ open, student, onClose, onSaved }) {
               {SECTIONS.map((s) => <option key={s} value={s}>{s}</option>)}
             </select>
           </F>
-          <F label="School"><input className="input" value={form.school || ''} onChange={(e) => set('school', e.target.value)} /></F>
+          <F label="Gender">
+            <select className="input" value={form.gender || ''} onChange={(e) => set('gender', e.target.value)}>
+              <option value="">Select gender</option>
+              {GENDERS.map((g) => <option key={g} value={g}>{g}</option>)}
+            </select>
+          </F>
+          <F label="Date of Birth"><input type="date" className="input" value={form.dob || ''} onChange={(e) => set('dob', e.target.value)} /></F>
+          <F label="School">
+            <select className="input" value={form.school || ''} onChange={(e) => set('school', e.target.value)}>
+              <option value="">Select school</option>
+              {SCHOOLS.map((s) => <option key={s} value={s}>{s}</option>)}
+              {form.school && !SCHOOLS.includes(form.school) && <option value={form.school}>{form.school}</option>}
+            </select>
+          </F>
           <F label="Status">
             <select className="input" value={form.status || 'active'} onChange={(e) => set('status', e.target.value)}>
               <option value="active">Active</option>
@@ -147,8 +166,7 @@ export default function EditStudentModal({ open, student, onClose, onSaved }) {
               {availableBuses.map((b) => <option key={b._id} value={b._id}>{b.busNumber}</option>)}
             </select>
           </F>
-          <F label="Pickup Point"><input className="input" value={form.pickupPoint || ''} onChange={(e) => set('pickupPoint', e.target.value)} /></F>
-          <F label="Drop Point"><input className="input" value={form.dropPoint || ''} onChange={(e) => set('dropPoint', e.target.value)} /></F>
+          <F label="Pickup & Drop Point"><input className="input" value={form.pickupPoint || ''} onChange={(e) => set('pickupPoint', e.target.value)} /></F>
           <F label="Monthly Fee"><input type="number" className="input" value={form.monthlyFee ?? ''} onChange={(e) => set('monthlyFee', e.target.value)} /></F>
           <F label="Alt Mobile"><input className="input" value={form.altMobile || ''} maxLength={10} onChange={(e) => set('altMobile', e.target.value)} /></F>
           <F label="Address" className="sm:col-span-2">

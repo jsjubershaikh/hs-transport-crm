@@ -19,9 +19,16 @@ import { logActivity, clientIp } from '../utils/activityLogger.js';
  */
 export const listStudents = asyncHandler(async (req, res) => {
   const { page, limit, skip } = parsePagination(req.query);
-  const filter = { ...scopeFilter(req) };
-
   const yearId = await resolveYearId(req.query);
+
+  // Expanded mode: also emit each student's embedded siblings as their own rows
+  // so they appear in the list and can be filtered/sorted by class. Each sibling
+  // row carries isSibling + primaryStudentId so the UI redirects to the primary.
+  if (req.query.expandSiblings === 'true' || req.query.expandSiblings === '1') {
+    return listStudentsExpanded(req, res, { page, limit, skip, yearId });
+  }
+
+  const filter = { ...scopeFilter(req) };
   if (yearId) filter.academicYearId = yearId;
 
   if (req.query.class) filter.class = req.query.class;
@@ -51,6 +58,84 @@ export const listStudents = asyncHandler(async (req, res) => {
 
   return ok(res, withFees, buildMeta({ page, limit, total }));
 });
+
+/**
+ * Student list with embedded siblings flattened into their own rows.
+ * Shared fields (mobile, father, route, bus, pickup/drop, school, status) are
+ * inherited from the primary. Class/gender/search filters apply per-row so a
+ * sibling shows up when you filter by their class. Pagination counts all rows.
+ */
+async function listStudentsExpanded(req, res, { page, limit, skip, yearId }) {
+  const sharedMatch = { ...scopeFilter(req) };
+  if (yearId) sharedMatch.academicYearId = new mongoose.Types.ObjectId(yearId);
+  if (req.query.status) sharedMatch.status = req.query.status;
+  if (req.query.routeId && req.user.role === 'superadmin') {
+    sharedMatch.routeId = new mongoose.Types.ObjectId(req.query.routeId);
+  }
+
+  const rowMatch = {};
+  if (req.query.class) rowMatch.class = req.query.class;
+  if (req.query.gender) rowMatch.gender = req.query.gender;
+  if (req.query.search) {
+    const rx = new RegExp(escapeRegex(req.query.search), 'i');
+    rowMatch.$or = [{ name: rx }, { mobile: rx }, { fatherName: rx }, { class: rx }];
+  }
+
+  const route = { _id: '$route._id', routeName: '$route.routeName', routeNumber: '$route.routeNumber' };
+  const bus = { _id: '$bus._id', busNumber: '$bus.busNumber', vehicleNumber: '$bus.vehicleNumber' };
+
+  const [result] = await Student.aggregate([
+    { $match: sharedMatch },
+    { $lookup: { from: 'routes', localField: 'routeId', foreignField: '_id', as: 'route' } },
+    { $lookup: { from: 'buses', localField: 'busId', foreignField: '_id', as: 'bus' } },
+    { $addFields: { route: { $arrayElemAt: ['$route', 0] }, bus: { $arrayElemAt: ['$bus', 0] } } },
+    {
+      $addFields: {
+        _rows: {
+          $concatArrays: [
+            [{
+              _id: '$_id', isSibling: false, primaryStudentId: '$_id', primaryName: '$name',
+              photo: '$photo', name: '$name', fatherName: '$fatherName', motherName: '$motherName',
+              mobile: '$mobile', gender: '$gender', class: '$class', section: '$section',
+              school: '$school', status: '$status', pickupPoint: '$pickupPoint', dropPoint: '$dropPoint',
+              monthlyFee: '$monthlyFee', routeId: route, busId: bus,
+              createdAt: '$createdAt', sortKey: '$createdAt',
+              siblingCount: { $size: { $ifNull: ['$siblings', []] } },
+            }],
+            {
+              $map: {
+                input: { $ifNull: ['$siblings', []] },
+                as: 'sib',
+                in: {
+                  _id: '$$sib._id', isSibling: true, primaryStudentId: '$_id', primaryName: '$name',
+                  photo: '$$sib.photo', name: '$$sib.name', fatherName: '$fatherName', motherName: '$motherName',
+                  mobile: '$mobile', gender: '$$sib.gender', class: '$$sib.class', section: '$$sib.section',
+                  school: '$school', status: '$status', pickupPoint: '$pickupPoint', dropPoint: '$dropPoint',
+                  monthlyFee: '$$sib.monthlyFee', routeId: route, busId: bus,
+                  createdAt: '$createdAt', sortKey: '$createdAt', siblingCount: 0,
+                },
+              },
+            },
+          ],
+        },
+      },
+    },
+    { $unwind: '$_rows' },
+    { $replaceRoot: { newRoot: '$_rows' } },
+    ...(Object.keys(rowMatch).length ? [{ $match: rowMatch }] : []),
+    { $sort: { sortKey: -1, isSibling: 1, name: 1 } },
+    {
+      $facet: {
+        data: [{ $skip: skip }, { $limit: limit }],
+        total: [{ $count: 'count' }],
+      },
+    },
+  ]);
+
+  const items = result?.data || [];
+  const total = result?.total?.[0]?.count || 0;
+  return ok(res, items, buildMeta({ page, limit, total }));
+}
 
 /** GET /api/students/:id — single student with populated refs (RBAC-checked). */
 export const getStudent = asyncHandler(async (req, res) => {

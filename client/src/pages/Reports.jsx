@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import {
   BarChart3, FileSpreadsheet, FileText, IndianRupee, Users, GraduationCap,
+  Wallet, AlertCircle,
 } from 'lucide-react';
 import {
   ResponsiveContainer, BarChart, Bar, LineChart, Line, PieChart, Pie, Cell,
@@ -8,8 +9,9 @@ import {
 } from 'recharts';
 import PageHeader from '../components/PageHeader.jsx';
 import ChartCard from '../components/ChartCard.jsx';
+import StatCard from '../components/StatCard.jsx';
 import LoadingSpinner from '../components/LoadingSpinner.jsx';
-import { reportApi } from '../api/endpoints.js';
+import { reportApi, dashboardApi } from '../api/endpoints.js';
 import { useData } from '../context/DataContext.jsx';
 import { useUI } from '../context/UIContext.jsx';
 import { exportToExcel, exportToCSV } from '../utils/exporters.js';
@@ -52,17 +54,19 @@ function FinancialReports({ yearId }) {
   const [monthly, setMonthly] = useState(null);
   const [routeWise, setRouteWise] = useState(null);
   const [comparison, setComparison] = useState(null);
+  const [summary, setSummary] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const load = useCallback(async () => {
     setLoading(true);
     try {
-      const [m, r, c] = await Promise.all([
+      const [m, r, c, s] = await Promise.all([
         reportApi.financialMonthly(yearId),
         reportApi.financialRouteWise({ yearId }),
         reportApi.yearComparison(),
+        dashboardApi.stats(yearId),
       ]);
-      setMonthly(m); setRouteWise(r); setComparison(c);
+      setMonthly(m); setRouteWise(r); setComparison(c); setSummary(s);
     } finally { setLoading(false); }
   }, [yearId]);
   useEffect(() => { load(); }, [load]);
@@ -71,8 +75,26 @@ function FinancialReports({ yearId }) {
 
   const monthData = monthly.series.map((s) => ({ ...s, label: MONTH_LABELS[s.month]?.slice(0, 3) }));
 
+  const sc = summary?.cards;
+  const summaryCards = sc
+    ? [
+        { icon: Wallet, label: 'This Month Collected', value: sc.monthlyCollection, currency: true, variant: 'teal', trend: 12 },
+        { icon: AlertCircle, label: 'Pending Fees', value: sc.pendingFees, currency: true, variant: 'red', trend: -4 },
+        { icon: IndianRupee, label: 'Received Fees', value: sc.receivedFees, currency: true, variant: 'green', trend: 9 },
+      ]
+    : [];
+
   return (
     <div className="space-y-6">
+      {/* Financial summary cards (moved here from the Dashboard) */}
+      {summaryCards.length > 0 && (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {summaryCards.map((card, i) => (
+            <StatCard key={card.label} {...card} style={{ animationDelay: `${i * 50}ms` }} />
+          ))}
+        </div>
+      )}
+
       {/* Monthly collection */}
       <ChartCard
         title="Monthly Collection"

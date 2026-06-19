@@ -13,6 +13,8 @@ export const SECTIONS = ['A', 'B', 'C', 'D'];
 
 export const GENDERS = ['Male', 'Female', 'Other'];
 
+export const SCHOOLS = ['Millat English Medium School', 'Millat Urdu School'];
+
 export const PAYMENT_MODES = [
   { value: 'cash', label: 'Cash' },
   { value: 'upi', label: 'UPI' },

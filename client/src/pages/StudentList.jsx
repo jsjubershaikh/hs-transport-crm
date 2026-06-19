@@ -36,9 +36,13 @@ export default function StudentList() {
       page, limit: 20, search: search || undefined, class: classFilter || undefined,
       gender: genderFilter || undefined, routeId: routeFilter || undefined,
       status: statusFilter || undefined, academicYearId: selectedYearId || undefined,
+      expandSiblings: true, // include siblings as their own rows (linked to primary)
     }),
     [page, search, classFilter, genderFilter, routeFilter, statusFilter, selectedYearId]
   );
+
+  // A sibling row links to its primary's profile; a primary links to itself.
+  const profileId = (s) => (s.isSibling ? s.primaryStudentId : s._id);
 
   const { data, meta, loading, refetch } = useStudents(params);
 
@@ -56,73 +60,36 @@ export default function StudentList() {
     refetch();
   };
 
-  const fetchAllForExport = async () => {
-    const res = await studentApi.list({ ...params, page: 1, limit: 10000 });
-    return res.data || [];
-  };
-
+  // One row per student (primaries + siblings), matching exactly what the list shows.
   const exportCols = [
-    { key: 'type',             label: 'Type' },
-    { key: 'primaryName',      label: 'Primary Student' },
-    { key: 'name',             label: 'Name' },
-    { key: 'fatherName',       label: 'Father Name' },
-    { key: 'mobile',           label: 'Family Mobile' },
-    { key: 'class',            label: 'Class' },
-    { key: 'section',          label: 'Section' },
-    { key: 'gender',           label: 'Gender' },
-    { key: 'school',           label: 'School' },
-    { key: 'routeId.routeName',label: 'Route' },
-    { key: 'busId.busNumber',  label: 'Bus' },
-    { key: 'pickupPoint',      label: 'Pickup' },
-    { key: 'dropPoint',        label: 'Drop' },
-    { key: 'monthlyFee',       label: 'Monthly Fee' },
-    { key: 'status',           label: 'Status' },
+    { key: 'isSibling',         label: 'Type', format: (v) => (v ? 'Sibling' : 'Primary') },
+    { key: 'name',              label: 'Name' },
+    { key: 'fatherName',        label: 'Father Name' },
+    { key: 'mobile',            label: 'Mobile' },
+    { key: 'class',             label: 'Class' },
+    { key: 'section',           label: 'Section' },
+    { key: 'gender',            label: 'Gender' },
+    { key: 'school',            label: 'School' },
+    { key: 'routeId.routeName', label: 'Route' },
+    { key: 'busId.busNumber',   label: 'Bus' },
+    { key: 'pickupPoint',       label: 'Pickup & Drop Point' },
+    { key: 'monthlyFee',        label: 'Monthly Fee' },
+    { key: 'status',            label: 'Status' },
   ];
 
-  // Flatten students + siblings into a single row list for export.
-  // Siblings appear immediately below their primary student with:
-  //   - Type = "Sibling"
-  //   - Primary Student column = primary's name (so you know who they belong to)
-  //   - Shared fields (mobile, route, bus, pickup/drop, school) inherited from primary
-  const flattenForExport = (students) => {
-    const rows = [];
-    for (const s of students) {
-      rows.push({ ...s, type: 'Primary', primaryName: s.name });
-      if (s.siblings?.length) {
-        for (const sib of s.siblings) {
-          rows.push({
-            type: '  ↳ Sibling',          // indent for visual clarity in Excel
-            primaryName: s.name,
-            name: sib.name || '—',
-            fatherName: s.fatherName,
-            mobile: s.mobile,
-            class: sib.class || '',
-            section: sib.section || '',
-            gender: sib.gender || '',
-            school: s.school,
-            routeId: s.routeId,           // shared transport
-            busId: s.busId,
-            pickupPoint: s.pickupPoint,
-            dropPoint: s.dropPoint,
-            monthlyFee: sib.monthlyFee || 0,
-            status: s.status,
-          });
-        }
-      }
-    }
-    return rows;
-  };
-
   const doExport = async (kind) => {
+    if (kind === 'pdf') { window.print(); return; }
     try {
-      const students = await fetchAllForExport();
-      if (!students.length) return toast.warning('Nothing to export');
-      const rows = flattenForExport(students);
+      // Fetch every row matching the current server-side filters (all pages),
+      // then apply the active class-group tab so the export = what's visible.
+      const res = await studentApi.list({ ...params, page: 1, limit: 10000 });
+      const g = CLASS_GROUPS.find((x) => x.key === group) || CLASS_GROUPS[0];
+      const rows = (res.data || []).filter((s) => g.match(s.class));
+      if (!rows.length) return toast.warning('Nothing to export');
       const name = `students-${selectedYear?.label || 'all'}`;
       if (kind === 'csv') exportToCSV(name, exportCols, rows);
-      else if (kind === 'excel') exportToExcel(name, exportCols, rows, 'Students');
-      else window.print();
-      toast.success(`Exported ${students.length} students (${rows.length} rows incl. siblings)`);
+      else exportToExcel(name, exportCols, rows, 'Students');
+      toast.success(`Exported ${rows.length} student${rows.length !== 1 ? 's' : ''}`);
     } catch {
       toast.error('Export failed');
     }
@@ -135,8 +102,17 @@ export default function StudentList() {
         <div className="flex items-center gap-3">
           <Avatar src={s.photo} name={s.name} size="sm" />
           <div>
-            <p className="font-medium text-text-primary">{s.name}</p>
-            <p className="text-xs text-text-secondary">{s.mobile}</p>
+            <div className="flex items-center gap-2">
+              <p className="font-medium text-text-primary">{s.name}</p>
+              {s.isSibling ? (
+                <span className="rounded-full bg-accent/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-accent">Sibling</span>
+              ) : s.siblingCount > 0 ? (
+                <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary">+{s.siblingCount} sibling{s.siblingCount > 1 ? 's' : ''}</span>
+              ) : null}
+            </div>
+            <p className="text-xs text-text-secondary">
+              {s.isSibling ? `Sibling of ${s.primaryName}` : s.mobile}
+            </p>
           </div>
         </div>
       ),
@@ -148,9 +124,9 @@ export default function StudentList() {
       key: 'actions', header: 'Actions', align: 'right',
       render: (s) => (
         <div className="flex items-center justify-end gap-1" onClick={(e) => e.stopPropagation()}>
-          <button className="btn btn-ghost btn-sm px-2" onClick={() => navigate(`/app/students/${s._id}`)} title="View"><Eye size={16} /></button>
-          <button className="btn btn-ghost btn-sm px-2" onClick={() => navigate(`/app/students/${s._id}`)} title="Edit"><Pencil size={15} /></button>
-          {isSuperAdmin && (
+          <button className="btn btn-ghost btn-sm px-2" onClick={() => navigate(`/app/students/${profileId(s)}`)} title={s.isSibling ? 'View primary profile' : 'View'}><Eye size={16} /></button>
+          <button className="btn btn-ghost btn-sm px-2" onClick={() => navigate(`/app/students/${profileId(s)}`)} title={s.isSibling ? 'Edit in primary profile' : 'Edit'}><Pencil size={15} /></button>
+          {isSuperAdmin && !s.isSibling && (
             <button className="btn btn-ghost btn-sm px-2 text-danger" onClick={() => setToDelete(s)} title="Delete"><Trash2 size={15} /></button>
           )}
         </div>
@@ -207,7 +183,8 @@ export default function StudentList() {
         loading={loading}
         meta={meta}
         onPageChange={setPage}
-        onRowClick={(s) => navigate(`/app/students/${s._id}`)}
+        onRowClick={(s) => navigate(`/app/students/${profileId(s)}`)}
+        rowClassName={(s) => (s.isSibling ? 'bg-slate-50/70 hover:bg-slate-100/80' : undefined)}
         empty={<EmptyState icon={GraduationCap} title="No students found" message="Add your first student to get started." action={<button className="btn btn-primary btn-md" onClick={() => navigate('/app/students/add')}><Plus size={16} /> Add Student</button>} />}
       />
 

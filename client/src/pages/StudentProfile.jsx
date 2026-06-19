@@ -376,8 +376,7 @@ function ProfileTab({ student }) {
           <DetailCard title="Transport">
             <Detail label="Route" value={student.routeId?.routeName} />
             <Detail label="Bus" value={student.busId?.busNumber} />
-            <Detail label="Pickup Point" value={student.pickupPoint} />
-            <Detail label="Drop Point" value={student.dropPoint} />
+            <Detail label="Pickup & Drop Point" value={student.pickupPoint} />
             {hasSiblings ? (
               <>
                 <Detail label="Primary Fee" value={formatCurrency(student.baseFee || 0)} />
