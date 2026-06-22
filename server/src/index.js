@@ -25,6 +25,10 @@ export async function createServer({ connect = true } = {}) {
   if (connect) await connectDB();
 
   const app = express();
+  // Render (and most hosts) put the app behind a reverse proxy, so the client
+  // IP arrives in X-Forwarded-For. Trust the first proxy hop so express-rate-limit
+  // reads the real IP instead of throwing ERR_ERL_UNEXPECTED_X_FORWARDED_FOR.
+  app.set('trust proxy', 1);
   const server = http.createServer(app);
 
   // --- Socket.io ---
