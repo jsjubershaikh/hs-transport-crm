@@ -1,5 +1,6 @@
 import { formatCurrency, formatDateLong } from '../utils/format.js';
 import { MONTH_LABELS } from '../utils/constants.js';
+import SiblingsCovered from './SiblingsCovered.jsx';
 
 /**
  * Professional A5 receipt — mirrors the downloadable PDF layout
@@ -17,7 +18,7 @@ export default function ReceiptTemplate({ receipt, settings }) {
   const remaining = fee.remainingAmount ?? 0;
   const status = fee.status || (remaining <= 0 ? 'paid' : 'partial');
   const logoSrc = company.logo || '/logo.png';
-  const classVal = `${student.class || ''}${student.section ? ' - ' + student.section : ''}`.trim();
+  const classVal = student.class || '';
   const contact = [company.phone, company.email].filter(Boolean).join('   •   ');
 
   return (
@@ -78,9 +79,12 @@ export default function ReceiptTemplate({ receipt, settings }) {
         <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 rounded-lg border border-border bg-slate-50 p-3">
           <Field label="Student" value={student.name} />
           <Field label="Father's Name" value={student.fatherName} />
-          <Field label="Class / Section" value={classVal} />
+          <Field label="Class" value={classVal} />
           <Field label="Billing Month" value={monthLabel} />
         </div>
+
+        {/* Siblings covered — only when this student has siblings */}
+        {student.siblings?.length > 0 && <SiblingsCovered siblings={student.siblings} />}
 
         {/* Payment Details */}
         <h4 className="mb-2 mt-5 text-[10px] font-bold uppercase tracking-wider text-text-secondary">Payment Details</h4>

@@ -7,6 +7,7 @@ import {
   updateStudent,
   deleteStudent,
   updateSiblings,
+  setSiblingStatus,
   getStudentFees,
   getStudentReceipts,
   getStudentHistory,
@@ -45,6 +46,7 @@ router.get('/:id/history', getStudentHistory);
 router.post('/', createRules, validate, createStudent);
 router.put('/:id', updateStudent);
 router.put('/:id/siblings', updateSiblings);
+router.patch('/:id/siblings/:siblingId/status', setSiblingStatus);
 router.delete('/:id', requireRole('superadmin'), deleteStudent);
 
 export default router;

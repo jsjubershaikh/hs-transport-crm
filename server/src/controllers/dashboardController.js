@@ -20,8 +20,10 @@ export const getDashboardStats = asyncHandler(async (req, res) => {
   const yearObjId = yearId ? new mongoose.Types.ObjectId(yearId) : null;
   const isSub = req.user.role === 'subadmin';
 
+  // Use the ObjectId form: aggregation $match (used below for student counts &
+  // admissions) does NOT auto-cast a string id the way find()/countDocuments do.
   const studentMatch = { ...scope };
-  if (yearId) studentMatch.academicYearId = yearId;
+  if (yearObjId) studentMatch.academicYearId = yearObjId;
 
   const feeMatch = { ...scope };
   if (yearObjId) feeMatch.academicYearId = yearObjId;
@@ -30,8 +32,8 @@ export const getDashboardStats = asyncHandler(async (req, res) => {
   const currentMonth = currentSeasonMonth();
 
   const [
-    totalStudents,
-    activeStudents,
+    totalAgg,
+    activeAgg,
     totalRoutes,
     totalBuses,
     feeTotals,
@@ -43,8 +45,30 @@ export const getDashboardStats = asyncHandler(async (req, res) => {
     recentPaymentsRaw,
     pendingAlertsRaw,
   ] = await Promise.all([
-    Student.countDocuments(studentMatch),
-    Student.countDocuments({ ...studentMatch, status: 'active' }),
+    // Total students = primaries + every embedded sibling.
+    Student.aggregate([
+      { $match: studentMatch },
+      { $group: { _id: null, primaries: { $sum: 1 }, siblings: { $sum: { $size: { $ifNull: ['$siblings', []] } } } } },
+    ]),
+    // Active students = active primaries + siblings not marked inactive (legacy siblings have no status → active).
+    Student.aggregate([
+      { $match: studentMatch },
+      {
+        $project: {
+          primaryActive: { $cond: [{ $eq: ['$status', 'active'] }, 1, 0] },
+          activeSiblings: {
+            $size: {
+              $filter: {
+                input: { $ifNull: ['$siblings', []] },
+                as: 's',
+                cond: { $ne: ['$$s.status', 'inactive'] },
+              },
+            },
+          },
+        },
+      },
+      { $group: { _id: null, total: { $sum: { $add: ['$primaryActive', '$activeSiblings'] } } } },
+    ]),
     isSub ? Promise.resolve(1) : Route.countDocuments(),
     isSub ? Bus.countDocuments({ assignedRouteId: req.user.assignedRouteId }) : Bus.countDocuments(),
 
@@ -145,6 +169,8 @@ export const getDashboardStats = asyncHandler(async (req, res) => {
 
   const totals = feeTotals[0] || { received: 0, totalFee: 0, pending: 0, partial: 0 };
   const thisMonthCollection = thisMonthCollectionRaw[0]?.total || 0;
+  const totalStudents = (totalAgg[0]?.primaries || 0) + (totalAgg[0]?.siblings || 0);
+  const activeStudents = activeAgg[0]?.total || 0;
 
   // Normalize the month series into the canonical Jun->Apr order.
   const monthMap = new Map(monthSeriesRaw.map((m) => [m._id, m]));

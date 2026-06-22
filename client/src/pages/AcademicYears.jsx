@@ -645,7 +645,7 @@ function ArchiveDetail({ year, onBack }) {
   const columns = [
     { key: 'name',       header: 'Name',         render: (s) => <span className="font-medium text-text-primary">{s.name}</span> },
     { key: 'fatherName', header: 'Father',        render: (s) => <span className="text-text-secondary">{s.fatherName}</span> },
-    { key: 'class',      header: 'Class',         render: (s) => `${s.class}-${s.section}` },
+    { key: 'class',      header: 'Class',         render: (s) => `${s.class}` },
     { key: 'route',      header: 'Route',         render: (s) => s.routeId?.routeName || '—' },
     { key: 'mobile',     header: 'Mobile',        render: (s) => <span className="text-text-secondary">{s.mobile}</span> },
     { key: 'fee',        header: 'Monthly Fee', align: 'right', render: (s) => <span className="font-mono">{formatCurrency(s.monthlyFee)}</span> },

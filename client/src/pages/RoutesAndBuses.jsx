@@ -310,7 +310,7 @@ function ViewStudentsModal({ open, route, onClose }) {
               {students.map((s) => (
                 <tr key={s._id} className="border-b border-border/60 last:border-0">
                   <td className="py-2 pr-3 font-medium">{s.name}</td>
-                  <td className="py-2 pr-3">{s.class}-{s.section}</td>
+                  <td className="py-2 pr-3">{s.class}</td>
                   <td className="py-2 pr-3 text-text-secondary">{s.mobile}</td>
                   <td className="py-2 pr-3 text-right font-mono">{formatCurrency(s.monthlyFee)}</td>
                   <td className="py-2 text-center"><Badge variant={s.status === 'active' ? 'active' : 'inactive'} /></td>

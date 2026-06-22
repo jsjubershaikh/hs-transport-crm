@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useCallback } from 'react';
+﻿import { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
   ArrowLeft, Pencil, Printer, Phone, MapPin, Bus, Route as RouteIcon,
@@ -53,6 +53,7 @@ export default function StudentProfile() {
   const [inactiveModal, setInactiveModal] = useState(null); // 'deactivate' | 'rejoin'
   const [viewReceipt, setViewReceipt] = useState(null);
   const [editing, setEditing] = useState(false);
+  const [siblingBusy, setSiblingBusy] = useState(null);
 
   // Find receipt id for a fee row — receipts are indexed by receiptNumber on the fee record
   const getReceiptForFee = useCallback(async (fee) => {
@@ -85,7 +86,27 @@ export default function StudentProfile() {
   }, [id, selectedYearId, navigate, toast]);
 
   useEffect(() => { setLoading(true); load(); }, [load]);
-  useRealtime(['fee:updated', 'receipt:created', 'student:updated'], load);
+
+  // Pause realtime-driven reloads while a data-entry modal is open, so another
+  // admin's concurrent change can't reset unsaved input. Saving re-syncs anyway.
+  const busyRef = useRef(false);
+  busyRef.current = !!(editing || collectFee || editFee || bulkPay || adjustFees || inactiveModal);
+  const guardedReload = useCallback(() => { if (!busyRef.current) load(); }, [load]);
+  useRealtime(['fee:updated', 'receipt:created', 'student:updated'], guardedReload);
+
+  const toggleSiblingStatus = async (sib) => {
+    const next = sib.status === 'inactive' ? 'active' : 'inactive';
+    setSiblingBusy(sib._id);
+    try {
+      await studentApi.setSiblingStatus(id, sib._id, next);
+      toast.success(`${sib.name} marked ${next}`);
+      await load();
+    } catch (e) {
+      toast.error(e.normalizedMessage || 'Failed to update sibling');
+    } finally {
+      setSiblingBusy(null);
+    }
+  };
 
   if (loading || !student) return <LoadingSpinner label="Loading profile…" />;
 
@@ -110,7 +131,7 @@ export default function StudentProfile() {
               <h1 className="font-heading text-2xl font-bold text-text-primary">{student.name}</h1>
               <Badge variant={student.status === 'active' ? 'active' : 'inactive'} />
             </div>
-            <p className="mt-0.5 text-sm text-text-secondary">S/o {student.fatherName} · Class {student.class}-{student.section} · {student.school}</p>
+            <p className="mt-0.5 text-sm text-text-secondary">S/o {student.fatherName} · Class {student.class} · {student.school}</p>
             <div className="mt-3 flex flex-wrap gap-2">
               <Tag icon={RouteIcon}>{student.routeId?.routeName || '—'}</Tag>
               <Tag icon={Bus}>{student.busId?.busNumber || '—'}</Tag>
@@ -150,7 +171,7 @@ export default function StudentProfile() {
       </div>
 
       {/* Tab content */}
-      {tab === 'Profile' && <ProfileTab student={student} />}
+      {tab === 'Profile' && <ProfileTab student={student} siblingBusy={siblingBusy} onToggleSiblingStatus={toggleSiblingStatus} />}
 
       {tab === 'Fees' && (
         <div className="space-y-4">
@@ -298,7 +319,7 @@ export default function StudentProfile() {
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <div>
                       <p className="font-heading font-bold text-text-primary">{h.academicYear?.label || '—'}</p>
-                      <p className="text-sm text-text-secondary">Class {h.class}-{h.section} · {h.status}</p>
+                      <p className="text-sm text-text-secondary">Class {h.class} · {h.status}</p>
                     </div>
                     <div className="text-right text-sm">
                       <p className="text-success">{formatCurrency(h.totalPaid)} paid</p>
@@ -349,7 +370,7 @@ export default function StudentProfile() {
   );
 }
 
-function ProfileTab({ student }) {
+function ProfileTab({ student, siblingBusy, onToggleSiblingStatus }) {
   const siblings = student.siblings || [];
   const hasSiblings = siblings.length > 0;
 
@@ -368,7 +389,7 @@ function ProfileTab({ student }) {
         </DetailCard>
         <div className="space-y-5">
           <DetailCard title="Academic">
-            <Detail label="Class" value={`${student.class} - ${student.section}`} />
+            <Detail label="Class" value={student.class} />
             <Detail label="School" value={student.school} />
             <Detail label="Academic Year" value={student.academicYearId?.label} />
             <Detail label="Admission Date" value={formatDate(student.admissionDate)} />
@@ -409,7 +430,7 @@ function ProfileTab({ student }) {
           <>
             <div className="space-y-3">
               {siblings.map((s, i) => (
-                <div key={s._id || i} className="rounded-xl border border-border bg-slate-50/60 p-4">
+                <div key={s._id || i} className={`rounded-xl border border-border bg-slate-50/60 p-4 ${s.status === 'inactive' ? 'opacity-60' : ''}`}>
                   <div className="flex items-start gap-4">
                     {/* Photo */}
                     {s.photo
@@ -425,13 +446,32 @@ function ProfileTab({ student }) {
                         <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary">
                           Sibling {i + 1}
                         </span>
+                        {s.status === 'inactive' && (
+                          <span className="rounded-full bg-danger/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-danger">
+                            Inactive
+                          </span>
+                        )}
+                        <button
+                          onClick={() => onToggleSiblingStatus(s)}
+                          disabled={siblingBusy === s._id}
+                          className={`ml-auto inline-flex items-center gap-1 rounded-lg border px-2.5 py-1 text-xs font-semibold transition disabled:opacity-50 ${
+                            s.status === 'inactive'
+                              ? 'border-success/40 text-success hover:bg-success/10'
+                              : 'border-danger/40 text-danger hover:bg-danger/10'
+                          }`}
+                        >
+                          {siblingBusy === s._id
+                            ? <Loader2 size={13} className="animate-spin" />
+                            : s.status === 'inactive' ? <UserCheck size={13} /> : <UserX size={13} />}
+                          {s.status === 'inactive' ? 'Activate' : 'Mark Inactive'}
+                        </button>
                       </div>
                       {/* Detail grid */}
                       <div className="grid gap-x-6 gap-y-2 sm:grid-cols-3 text-xs">
                         {s.class && (
                           <div>
                             <p className="uppercase tracking-wide text-text-secondary">Class</p>
-                            <p className="font-medium text-text-primary">{s.class}{s.section ? `-${s.section}` : ''}</p>
+                            <p className="font-medium text-text-primary">{s.class}</p>
                           </div>
                         )}
                         {s.gender && (

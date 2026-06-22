@@ -199,6 +199,9 @@ export async function generateReceiptPdf(receipt, settings = {}) {
     extraValue: monthLabel,
   });
 
+  // siblings covered (only when present)
+  y = drawSiblingsCovered(pdf, M, CW, y, student.siblings);
+
   // payment details
   y = drawSectionTitle(pdf, M, y, 'Payment Details');
   pdf.setFont('helvetica', 'bold');
@@ -283,6 +286,9 @@ export async function generateBulkReceiptPdf(receipt, settings = {}) {
     extraLabel: 'Months Covered',
     extraValue: String(bulk.length),
   });
+
+  // siblings covered (only when present)
+  y = drawSiblingsCovered(pdf, M, CW, y, student.siblings);
 
   // month-wise table — adaptive row height so the receipt always fits one page
   y = drawSectionTitle(pdf, M, y, 'Month-wise Breakdown');
@@ -495,6 +501,50 @@ function drawSectionTitle(pdf, M, y, title) {
   return y + 3;
 }
 
+/** A clean Name/Class mini-table of the siblings covered — only when present. */
+function drawSiblingsCovered(pdf, M, CW, y, siblings) {
+  const list = Array.isArray(siblings) ? siblings : [];
+  if (!list.length) return y;
+
+  y = drawSectionTitle(pdf, M, y, 'Siblings Covered');
+
+  // header row
+  pdf.setFont('helvetica', 'bold');
+  pdf.setFontSize(7);
+  setColor(pdf, C.textSec);
+  pdf.text('NAME', M + 2, y);
+  pdf.text('CLASS', M + CW - 2, y, { align: 'right' });
+  y += 2;
+  strokeColor(pdf, C.border);
+  pdf.setLineWidth(0.4);
+  pdf.line(M, y, M + CW, y);
+  y += 1.5;
+
+  const rowH = 5.4;
+  const top = y;
+  list.forEach((s, i) => {
+    const ry = top + i * rowH;
+    if (i % 2 === 1) {
+      fillColor(pdf, C.slate);
+      pdf.rect(M, ry, CW, rowH, 'F');
+    }
+    const mid = ry + rowH / 2 + 0.4;
+    pdf.setFont('helvetica', 'bold');
+    pdf.setFontSize(8.5);
+    setColor(pdf, C.text);
+    pdf.text(s.name || '—', M + 2, mid, { baseline: 'middle' });
+    pdf.setFont('helvetica', 'normal');
+    setColor(pdf, C.textSec);
+    const cls = s.class ? `Class ${s.class}` : '—';
+    pdf.text(cls, M + CW - 2, mid, { align: 'right', baseline: 'middle' });
+  });
+  const tableH = rowH * list.length;
+  strokeColor(pdf, C.border);
+  pdf.setLineWidth(0.3);
+  pdf.rect(M, top, CW, tableH);
+  return top + tableH + 4;
+}
+
 function drawStudentPanel(pdf, PW, M, CW, y, { student, extraLabel, extraValue }) {
   y = drawSectionTitle(pdf, M, y, 'Student Details');
   const panelH = 22;
@@ -514,10 +564,10 @@ function drawStudentPanel(pdf, PW, M, CW, y, { student, extraLabel, extraValue }
     setColor(pdf, C.text);
     pdf.text(String(value || '—'), x, fy + 4.5);
   };
-  const classVal = `${student.class || ''}${student.section ? ' - ' + student.section : ''}`.trim();
+  const classVal = student.class || '';
   field('Student', student.name, M + 5, y + 6);
   field("Father's Name", student.fatherName, col2X, y + 6);
-  field('Class / Section', classVal, M + 5, y + 14);
+  field('Class', classVal, M + 5, y + 14);
   field(extraLabel, extraValue, col2X, y + 14);
   return y + panelH + 8;
 }

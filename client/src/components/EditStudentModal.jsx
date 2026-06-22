@@ -7,7 +7,7 @@ import { studentApi } from '../api/endpoints.js';
 import { useData } from '../context/DataContext.jsx';
 import { useUI } from '../context/UIContext.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
-import { CLASSES, SECTIONS, GENDERS, SCHOOLS } from '../utils/constants.js';
+import { CLASSES, GENDERS, SCHOOLS } from '../utils/constants.js';
 import { uploadPhoto } from '../utils/cloudinary.js';
 
 /** Edit a student's mutable fields including photo. Subadmins can't change the route. */
@@ -20,7 +20,7 @@ export default function EditStudentModal({ open, student, onClose, onSaved }) {
   const [siblingsOpen, setSiblingsOpen] = useState(false);
 
   useEffect(() => {
-    if (student) {
+    if (open && student) {
       setForm({
         photo: student.photo || '',
         name: student.name, fatherName: student.fatherName, motherName: student.motherName,
@@ -32,7 +32,10 @@ export default function EditStudentModal({ open, student, onClose, onSaved }) {
         monthlyFee: student.monthlyFee, status: student.status,
       });
     }
-  }, [student]);
+    // Initialize only when the modal OPENS — never while it's open — so a
+    // background refresh (another admin's change) can't wipe unsaved edits.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
 
   const set = (k, v) => setForm((f) => ({ ...f, [k]: v }));
 
@@ -128,11 +131,6 @@ export default function EditStudentModal({ open, student, onClose, onSaved }) {
           <F label="Class">
             <select className="input" value={form.class || ''} onChange={(e) => set('class', e.target.value)}>
               {CLASSES.map((c) => <option key={c} value={c}>{c}</option>)}
-            </select>
-          </F>
-          <F label="Section">
-            <select className="input" value={form.section || ''} onChange={(e) => set('section', e.target.value)}>
-              {SECTIONS.map((s) => <option key={s} value={s}>{s}</option>)}
             </select>
           </F>
           <F label="Gender">

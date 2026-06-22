@@ -129,9 +129,7 @@ function buildIdCardHtml({ student, settings }) {
       ? `<img class="photo" crossorigin="anonymous" src="${esc(cardStudent.photo)}" alt="${esc(cardStudent.name)}" />`
       : `<div class="photo-ph">${esc((cardStudent.name || 'S').charAt(0).toUpperCase())}</div>`;
 
-    const classLabel = cardStudent.class
-      ? `${cardStudent.class}${cardStudent.section ? `-${cardStudent.section}` : ''}`
-      : '—';
+    const classLabel = cardStudent.class || '—';
     const dobFormatted = cardStudent.dob
       ? new Date(cardStudent.dob).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })
       : '—';

@@ -12,6 +12,7 @@ const siblingSchema = new mongoose.Schema(
     monthlyFee:    { type: Number, default: 0, min: 0 },
     academicYearId:{ type: mongoose.Schema.Types.ObjectId, ref: 'AcademicYear' },
     admissionDate: { type: Date, default: Date.now },
+    status:        { type: String, enum: STUDENT_STATUS, default: 'active' },
   },
   { _id: true }
 );

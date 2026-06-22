@@ -33,7 +33,8 @@ export default function StudentList() {
 
   const params = useMemo(
     () => ({
-      page, limit: 20, search: search || undefined, class: classFilter || undefined,
+      page, limit: 100000, // show every student in one list (no paging sheets)
+      search: search || undefined, class: classFilter || undefined,
       gender: genderFilter || undefined, routeId: routeFilter || undefined,
       status: statusFilter || undefined, academicYearId: selectedYearId || undefined,
       expandSiblings: true, // include siblings as their own rows (linked to primary)
@@ -67,7 +68,6 @@ export default function StudentList() {
     { key: 'fatherName',        label: 'Father Name' },
     { key: 'mobile',            label: 'Mobile' },
     { key: 'class',             label: 'Class' },
-    { key: 'section',           label: 'Section' },
     { key: 'gender',            label: 'Gender' },
     { key: 'school',            label: 'School' },
     { key: 'routeId.routeName', label: 'Route' },
@@ -118,7 +118,7 @@ export default function StudentList() {
       ),
     },
     { key: 'fatherName', header: 'Father', render: (s) => <span className="text-text-secondary">{s.fatherName}</span> },
-    { key: 'class', header: 'Class', render: (s) => <span className="font-medium">{s.class}{s.section ? `-${s.section}` : ''}</span> },
+    { key: 'class', header: 'Class', render: (s) => <span className="font-medium">{s.class}</span> },
     { key: 'route', header: 'Route', render: (s) => <span className="text-text-secondary">{s.routeId?.routeName || '—'}</span> },
     {
       key: 'actions', header: 'Actions', align: 'right',

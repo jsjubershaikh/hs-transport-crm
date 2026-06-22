@@ -4,13 +4,13 @@ import Modal from './Modal.jsx';
 import { studentApi } from '../api/endpoints.js';
 import { useUI } from '../context/UIContext.jsx';
 import { useData } from '../context/DataContext.jsx';
-import { CLASSES, SECTIONS, GENDERS } from '../utils/constants.js';
+import { CLASSES, GENDERS } from '../utils/constants.js';
 import { formatCurrency } from '../utils/format.js';
 import { uploadPhoto } from '../utils/cloudinary.js';
 
 const EMPTY_SIBLING = {
   photo: '', name: '', gender: 'Male', dob: '',
-  class: '', section: 'A', monthlyFee: '',
+  class: '', monthlyFee: '',
   academicYearId: '', admissionDate: '',
 };
 
@@ -38,7 +38,9 @@ export default function SiblingsModal({ open, student, onClose, onSaved }) {
       })));
       setBaseFee(Number(student.baseFee) || Number(student.monthlyFee) || 0);
     }
-  }, [open, student]);
+    // Initialize only when the modal OPENS so a background refresh can't reset edits.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
 
   if (!student) return null;
 
@@ -181,12 +183,6 @@ export default function SiblingsModal({ open, student, onClose, onSaved }) {
                 >
                   <option value="">Select class</option>
                   {CLASSES.filter((c) => c !== 'Alumni').map((c) => <option key={c} value={c}>{c}</option>)}
-                </select>
-              </div>
-              <div>
-                <label className="label">Section</label>
-                <select className="input" value={s.section || 'A'} onChange={(e) => update(i, 'section', e.target.value)}>
-                  {SECTIONS.map((sec) => <option key={sec} value={sec}>{sec}</option>)}
                 </select>
               </div>
               <div>

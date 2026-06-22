@@ -12,7 +12,7 @@ export default function ManualReceiptTemplate({ receipt, settings }) {
   const receiptCfg = settings?.receipt || {};
   const items = receipt.items || [];
   const logoSrc = company.logo || '/logo.png';
-  const classVal = `${student.class || ''}${student.section ? ' - ' + student.section : ''}`.trim();
+  const classVal = student.class || '';
   const contact = [company.phone, company.email].filter(Boolean).join('   •   ');
 
   return (
@@ -70,7 +70,7 @@ export default function ManualReceiptTemplate({ receipt, settings }) {
         <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 rounded-lg border border-border bg-slate-50 p-3">
           <Field label="Student" value={student.name} />
           <Field label="Father's Name" value={student.fatherName} />
-          <Field label="Class / Section" value={classVal} />
+          <Field label="Class" value={classVal} />
           <Field label="Payment Mode" value={(receipt.paymentMode || '—').toUpperCase()} />
         </div>
 

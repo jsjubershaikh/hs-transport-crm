@@ -178,7 +178,7 @@ export default function Alumni() {
                           </div>
                         </div>
                       </td>
-                      <td className="px-4 py-3 font-medium">{s.class}{s.section ? `-${s.section}` : ''}</td>
+                      <td className="px-4 py-3 font-medium">{s.class}</td>
                       <td className="px-4 py-3 text-text-secondary">{s.fatherName || '—'}</td>
                       <td className="px-4 py-3 font-mono text-text-secondary">{s.mobile || '—'}</td>
                       <td className="px-4 py-3">

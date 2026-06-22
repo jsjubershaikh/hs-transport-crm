@@ -45,7 +45,7 @@ export default function Families() {
     const rows = family.members.flatMap((m) =>
       m.fees.map((f) => ({
         studentName: m.student.name,
-        class: `${m.student.class}${m.student.section ? '-' + m.student.section : ''}`,
+        class: m.student.class,
         month: MONTH_LABELS[f.month] || f.month,
         monthlyFee: f.monthlyFee,
         paid: f.paidAmount,
@@ -156,7 +156,7 @@ export default function Families() {
                     <div>
                       <p className="font-semibold text-text-primary">{student.name}</p>
                       <p className="text-xs text-text-secondary">
-                        Class {student.class}{student.section ? `-${student.section}` : ''} ·{' '}
+                        Class {student.class} ·{' '}
                         {student.routeId?.routeName || '—'}
                       </p>
                     </div>

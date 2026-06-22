@@ -18,7 +18,9 @@ import { logActivity, clientIp } from '../utils/activityLogger.js';
  * academicYearId). Subadmins are auto-scoped to their route.
  */
 export const listStudents = asyncHandler(async (req, res) => {
-  const { page, limit, skip } = parsePagination(req.query);
+  // Higher cap so the UI can show every student in one list (and exports aren't
+  // silently truncated). Students per school stay in the low thousands at most.
+  const { page, limit, skip } = parsePagination(req.query, { maxLimit: 100000 });
   const yearId = await resolveYearId(req.query);
 
   // Expanded mode: also emit each student's embedded siblings as their own rows
@@ -68,12 +70,15 @@ export const listStudents = asyncHandler(async (req, res) => {
 async function listStudentsExpanded(req, res, { page, limit, skip, yearId }) {
   const sharedMatch = { ...scopeFilter(req) };
   if (yearId) sharedMatch.academicYearId = new mongoose.Types.ObjectId(yearId);
-  if (req.query.status) sharedMatch.status = req.query.status;
   if (req.query.routeId && req.user.role === 'superadmin') {
     sharedMatch.routeId = new mongoose.Types.ObjectId(req.query.routeId);
   }
 
+  // Status applies per-row (each primary/sibling has its own status), so it goes
+  // in rowMatch — not sharedMatch — so an active sibling of an inactive primary
+  // still shows, and an inactive sibling of an active primary is hidden.
   const rowMatch = {};
+  if (req.query.status) rowMatch.status = req.query.status;
   if (req.query.class) rowMatch.class = req.query.class;
   if (req.query.gender) rowMatch.gender = req.query.gender;
   if (req.query.search) {
@@ -110,7 +115,7 @@ async function listStudentsExpanded(req, res, { page, limit, skip, yearId }) {
                   _id: '$$sib._id', isSibling: true, primaryStudentId: '$_id', primaryName: '$name',
                   photo: '$$sib.photo', name: '$$sib.name', fatherName: '$fatherName', motherName: '$motherName',
                   mobile: '$mobile', gender: '$$sib.gender', class: '$$sib.class', section: '$$sib.section',
-                  school: '$school', status: '$status', pickupPoint: '$pickupPoint', dropPoint: '$dropPoint',
+                  school: '$school', status: { $ifNull: ['$$sib.status', 'active'] }, pickupPoint: '$pickupPoint', dropPoint: '$dropPoint',
                   monthlyFee: '$$sib.monthlyFee', routeId: route, busId: bus,
                   createdAt: '$createdAt', sortKey: '$createdAt', siblingCount: 0,
                 },
@@ -307,6 +312,7 @@ export const updateSiblings = asyncHandler(async (req, res) => {
       monthlyFee:     Number(s.monthlyFee) || 0,
       academicYearId: s.academicYearId || undefined,
       admissionDate:  s.admissionDate  || undefined,
+      status:         s.status === 'inactive' ? 'inactive' : 'active', // preserve active/inactive
     }))
     .filter((s) => s.name);
 
@@ -340,6 +346,38 @@ export const updateSiblings = asyncHandler(async (req, res) => {
     userId: req.user.id,
     action: 'student.update_siblings',
     details: { studentId: student._id, siblingCount: siblings.length, combinedFee },
+    ip: clientIp(req),
+  });
+
+  return ok(res, populated);
+});
+
+/** PATCH /api/students/:id/siblings/:siblingId/status — mark a sibling active/inactive. */
+export const setSiblingStatus = asyncHandler(async (req, res) => {
+  const { status } = req.body;
+  if (!['active', 'inactive'].includes(status)) throw ApiError.badRequest('Status must be active or inactive');
+
+  const student = await Student.findById(req.params.id);
+  if (!student) throw ApiError.notFound('Student not found');
+  ensureRouteAccess(req, student.routeId);
+
+  const sib = student.siblings.id(req.params.siblingId);
+  if (!sib) throw ApiError.notFound('Sibling not found');
+  sib.status = status;
+  await student.save();
+
+  const populated = await Student.findById(student._id)
+    .populate('routeId', 'routeName routeNumber driverName driverContact')
+    .populate('busId', 'busNumber vehicleNumber capacity')
+    .populate('academicYearId', 'label isCurrent isArchived')
+    .lean();
+
+  emitToScope('student:updated', { entity: populated, label: `Sibling ${sib.name} marked ${status}` }, { routeId: student.routeId });
+
+  await logActivity({
+    userId: req.user.id,
+    action: 'student.sibling_status',
+    details: { studentId: student._id, siblingId: String(sib._id), status },
     ip: clientIp(req),
   });
 

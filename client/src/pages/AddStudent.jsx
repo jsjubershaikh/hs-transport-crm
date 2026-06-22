@@ -6,12 +6,12 @@ import { studentApi } from '../api/endpoints.js';
 import { useData } from '../context/DataContext.jsx';
 import { useUI } from '../context/UIContext.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
-import { CLASSES, SECTIONS, GENDERS, SCHOOLS } from '../utils/constants.js';
+import { CLASSES, GENDERS, SCHOOLS } from '../utils/constants.js';
 import { uploadPhoto } from '../utils/cloudinary.js';
 
 const EMPTY = {
   photo: '', name: '', fatherName: '', motherName: '', mobile: '', altMobile: '', address: '',
-  gender: 'Male', dob: '', class: '', section: 'A', school: '', academicYearId: '',
+  gender: 'Male', dob: '', class: '', school: '', academicYearId: '',
   routeId: '', busId: '', pickupPoint: '', monthlyFee: '',
 };
 
@@ -185,11 +185,6 @@ export default function AddStudent() {
               <select className={inp(errors.class)} value={form.class} onChange={(e) => set('class', e.target.value)}>
                 <option value="">Select class</option>
                 {CLASSES.filter((c) => c !== 'Alumni').map((c) => <option key={c} value={c}>{c}</option>)}
-              </select>
-            </Field>
-            <Field label="Section">
-              <select className={inp()} value={form.section} onChange={(e) => set('section', e.target.value)}>
-                {SECTIONS.map((s) => <option key={s} value={s}>{s}</option>)}
               </select>
             </Field>
             <Field label="School" required error={errors.school} className="lg:col-span-2">

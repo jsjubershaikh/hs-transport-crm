@@ -176,7 +176,7 @@ export default function ManualReceiptBuilder({ open, onClose, onCreated }) {
                 <div>
                   <p className="text-sm font-semibold text-text-primary">{student.name}</p>
                   <p className="text-xs text-text-secondary">
-                    Class {student.class}{student.section ? `-${student.section}` : ''}{student.mobile ? ` · ${student.mobile}` : ''}
+                    Class {student.class}{student.mobile ? ` · ${student.mobile}` : ''}
                   </p>
                 </div>
               </div>

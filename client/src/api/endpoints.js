@@ -28,6 +28,7 @@ export const studentApi = {
   create: (body) => api.post('/students', body).then(unwrap),
   update: (id, body) => api.put(`/students/${id}`, body).then(unwrap),
   updateSiblings: (id, body) => api.put(`/students/${id}/siblings`, body).then(unwrap),
+  setSiblingStatus: (id, siblingId, status) => api.patch(`/students/${id}/siblings/${siblingId}/status`, { status }).then(unwrap),
   remove: (id) => api.delete(`/students/${id}`).then(unwrap),
   fees: (id, academicYearId) => api.get(`/students/${id}/fees`, { params: { academicYearId } }).then(unwrap),
   receipts: (id, type) => api.get(`/students/${id}/receipts`, { params: type ? { type } : {} }).then(unwrap),
