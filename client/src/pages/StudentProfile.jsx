@@ -38,7 +38,6 @@ export default function StudentProfile() {
   const [bulkReceipts, setBulkReceipts] = useState([]); // bulk only
   const [history, setHistory] = useState([]);
   const [settings, setSettings] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [tab, setTab] = useState('Profile');
 
   // Load company settings once (for ID card header)
@@ -80,12 +79,10 @@ export default function StudentProfile() {
     } catch (e) {
       toast.error(e.normalizedMessage || 'Failed to load student');
       navigate('/app/students');
-    } finally {
-      setLoading(false);
     }
   }, [id, selectedYearId, navigate, toast]);
 
-  useEffect(() => { setLoading(true); load(); }, [load]);
+  useEffect(() => { load(); }, [load]);
 
   // Pause realtime-driven reloads while a data-entry modal is open, so another
   // admin's concurrent change can't reset unsaved input. Saving re-syncs anyway.
@@ -108,7 +105,10 @@ export default function StudentProfile() {
     }
   };
 
-  if (loading || !student) return <LoadingSpinner label="Loading profile…" />;
+  // Only blank out on the FIRST load (no student yet). Once the student is
+  // loaded, keep rendering during background reloads so an open edit modal is
+  // never unmounted/reset by another admin's change.
+  if (!student) return <LoadingSpinner label="Loading profile…" />;
 
   const totals = fees.reduce(
     (a, f) => ({ fee: a.fee + f.monthlyFee, paid: a.paid + f.paidAmount, pending: a.pending + f.remainingAmount }),
