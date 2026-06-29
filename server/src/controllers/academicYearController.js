@@ -10,8 +10,14 @@ import { emitToScope } from '../services/realtime.js';
 /** GET /api/academic-years — all years with student counts. */
 export const listYears = asyncHandler(async (req, res) => {
   const years = await AcademicYear.find().sort({ startDate: -1 }).lean();
+  // Count primaries + their embedded siblings so the total matches the dashboard/list.
   const counts = await Student.aggregate([
-    { $group: { _id: '$academicYearId', count: { $sum: 1 } } },
+    {
+      $group: {
+        _id: '$academicYearId',
+        count: { $sum: { $add: [1, { $size: { $ifNull: ['$siblings', []] } }] } },
+      },
+    },
   ]);
   const countMap = new Map(counts.map((c) => [String(c._id), c.count]));
   const withCounts = years.map((y) => ({ ...y, studentsCount: countMap.get(String(y._id)) || 0 }));

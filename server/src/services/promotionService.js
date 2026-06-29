@@ -4,7 +4,6 @@ import FeeRecord from '../models/FeeRecord.js';
 import Promotion from '../models/Promotion.js';
 import ApiError from '../utils/ApiError.js';
 import { withTransaction } from '../utils/withTransaction.js';
-import { createSeasonForStudent } from './feeService.js';
 import { PROMOTION_MAP, MONTHS } from '../utils/constants.js';
 
 /**
@@ -68,11 +67,12 @@ export async function runPromotion({ fromYearId, toYearId, promotedBy }) {
       status: 'active',
     }).session(session);
 
-    let promotedCount = 0;
     let alumniCount = 0;
-
     const feeSum = (arr) => arr.reduce((sum, x) => sum + (Number(x.monthlyFee) || 0), 0);
 
+    // Build every clone document first, then bulk-insert — far fewer DB round
+    // trips than per-student create() (which timed out for hundreds of students).
+    const cloneDocs = [];
     for (const s of sourceStudents) {
       const nextClass = PROMOTION_MAP[s.class] ?? s.class;
       const isAlumni = nextClass === 'Alumni';
@@ -116,55 +116,63 @@ export async function runPromotion({ fromYearId, toYearId, promotedBy }) {
         // Normal promotion: primary stays primary with the next class.
         const baseFee = Number(s.baseFee) || 0;
         const monthlyFee = sourceSiblings.length > 0 ? baseFee + feeSum(promotedSiblings) : s.monthlyFee;
-        const [clone] = await Student.create(
-          [{
-            ...family,
-            photo: s.photo, name: s.name, gender: s.gender, dob: s.dob,
-            class: nextClass, section: s.section,
-            baseFee: s.baseFee, monthlyFee, siblings: promotedSiblings,
-            status: 'active', admissionDate: s.admissionDate,
-          }],
-          { session }
-        );
-        await createSeasonForStudent(clone, toYear._id, { session });
-        promotedCount += 1;
+        cloneDocs.push({
+          ...family,
+          photo: s.photo, name: s.name, gender: s.gender, dob: s.dob,
+          class: nextClass, section: s.section,
+          baseFee: s.baseFee, monthlyFee, siblings: promotedSiblings,
+          status: 'active', admissionDate: s.admissionDate,
+        });
         continue;
       }
 
       // Primary graduates -> Alumni. Keep them as an inactive Alumni record
       // (siblings are transferred to the new primary, so this record holds none).
       alumniCount += 1;
-      await Student.create(
-        [{
-          ...family,
-          photo: s.photo, name: s.name, gender: s.gender, dob: s.dob,
-          class: 'Alumni', section: s.section,
-          baseFee: 0, monthlyFee: sourceSiblings.length > 0 ? (Number(s.baseFee) || 0) : s.monthlyFee,
-          siblings: [],
-          status: 'inactive', admissionDate: s.admissionDate,
-        }],
-        { session }
-      );
+      cloneDocs.push({
+        ...family,
+        photo: s.photo, name: s.name, gender: s.gender, dob: s.dob,
+        class: 'Alumni', section: s.section,
+        baseFee: 0, monthlyFee: sourceSiblings.length > 0 ? (Number(s.baseFee) || 0) : s.monthlyFee,
+        siblings: [],
+        status: 'inactive', admissionDate: s.admissionDate,
+      });
 
       // Promote the FIRST surviving sibling to be the new primary; the rest
       // remain as that primary's siblings. They inherit the family's transport.
       if (promotedSiblings.length > 0) {
         const [first, ...rest] = promotedSiblings;
         const baseFee = Number(first.monthlyFee) || 0;
-        const [newPrimary] = await Student.create(
-          [{
-            ...family,
-            photo: first.photo, name: first.name, gender: first.gender, dob: first.dob,
-            class: first.class, section: first.section,
-            baseFee, monthlyFee: baseFee + feeSum(rest), siblings: rest,
-            status: 'active', admissionDate: first.admissionDate || s.admissionDate,
-          }],
-          { session }
-        );
-        await createSeasonForStudent(newPrimary, toYear._id, { session });
-        promotedCount += 1;
+        cloneDocs.push({
+          ...family,
+          photo: first.photo, name: first.name, gender: first.gender, dob: first.dob,
+          class: first.class, section: first.section,
+          baseFee, monthlyFee: baseFee + feeSum(rest), siblings: rest,
+          status: 'active', admissionDate: first.admissionDate || s.admissionDate,
+        });
       }
     }
+
+    // Bulk-insert all cloned students in one round trip, then build a fresh
+    // 11-month fee season for every ACTIVE clone and bulk-insert those too.
+    const insertedStudents = cloneDocs.length
+      ? await Student.insertMany(cloneDocs, { session })
+      : [];
+
+    const feeDocs = [];
+    for (const c of insertedStudents) {
+      if (c.status !== 'active') continue;
+      const fee = Number(c.monthlyFee) || 0;
+      for (const month of MONTHS) {
+        feeDocs.push({
+          studentId: c._id, academicYearId: toYear._id, routeId: c.routeId,
+          month, monthlyFee: fee, paidAmount: 0, remainingAmount: fee, status: 'pending',
+        });
+      }
+    }
+    if (feeDocs.length) await FeeRecord.insertMany(feeDocs, { session });
+
+    const promotedCount = insertedStudents.filter((c) => c.status === 'active').length;
 
     // 3) Archive the source year, make the target year current.
     await AcademicYear.updateOne(

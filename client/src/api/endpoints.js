@@ -84,7 +84,7 @@ export const yearApi = {
   delete: (id) => api.delete(`/academic-years/${id}`).then(unwrap),
   setCurrent: (id) => api.post(`/academic-years/${id}/set-current`).then(unwrap),
   archive: (id) => api.post(`/academic-years/${id}/archive`).then(unwrap),
-  promote: (body) => api.post('/academic-years/promote', body).then(unwrap),
+  promote: (body) => api.post('/academic-years/promote', body, { timeout: 180000 }).then(unwrap),
 };
 
 // ---- Receipts ----
