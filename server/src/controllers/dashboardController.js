@@ -24,6 +24,7 @@ export const getDashboardStats = asyncHandler(async (req, res) => {
   // admissions) does NOT auto-cast a string id the way find()/countDocuments do.
   const studentMatch = { ...scope };
   if (yearObjId) studentMatch.academicYearId = yearObjId;
+  studentMatch.class = { $ne: 'Alumni' }; // graduated alumni are tracked separately, not "students"
 
   const feeMatch = { ...scope };
   if (yearObjId) feeMatch.academicYearId = yearObjId;

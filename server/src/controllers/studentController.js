@@ -33,7 +33,9 @@ export const listStudents = asyncHandler(async (req, res) => {
   const filter = { ...scopeFilter(req) };
   if (yearId) filter.academicYearId = yearId;
 
-  if (req.query.class) filter.class = req.query.class;
+  // Graduated alumni never appear in the student list — only in the Alumni section.
+  if (req.query.class && req.query.class !== 'Alumni') filter.class = req.query.class;
+  else filter.class = { $ne: 'Alumni' };
   if (req.query.gender) filter.gender = req.query.gender;
   if (req.query.status) filter.status = req.query.status;
   // Superadmin may filter by route; subadmin's route is already forced by scopeFilter.
@@ -73,6 +75,8 @@ async function listStudentsExpanded(req, res, { page, limit, skip, yearId }) {
   if (req.query.routeId && req.user.role === 'superadmin') {
     sharedMatch.routeId = new mongoose.Types.ObjectId(req.query.routeId);
   }
+  // Exclude graduated alumni primaries — they belong only in the Alumni section.
+  sharedMatch.class = { $ne: 'Alumni' };
 
   // Status applies per-row (each primary/sibling has its own status), so it goes
   // in rowMatch — not sharedMatch — so an active sibling of an inactive primary

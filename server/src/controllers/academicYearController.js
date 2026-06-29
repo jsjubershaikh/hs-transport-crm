@@ -11,7 +11,9 @@ import { emitToScope } from '../services/realtime.js';
 export const listYears = asyncHandler(async (req, res) => {
   const years = await AcademicYear.find().sort({ startDate: -1 }).lean();
   // Count primaries + their embedded siblings so the total matches the dashboard/list.
+  // Exclude graduated alumni — they live in the Alumni section, not the student total.
   const counts = await Student.aggregate([
+    { $match: { class: { $ne: 'Alumni' } } },
     {
       $group: {
         _id: '$academicYearId',

@@ -148,7 +148,7 @@ export default function StudentList() {
         onSearch={resetPage(setSearch)}
         searchPlaceholder="Search name, mobile, class…"
         filters={[
-          { key: 'class', value: classFilter, onChange: resetPage(setClassFilter), placeholder: 'All Classes', options: CLASSES.map((c) => ({ value: c, label: c })) },
+          { key: 'class', value: classFilter, onChange: resetPage(setClassFilter), placeholder: 'All Classes', options: CLASSES.filter((c) => c !== 'Alumni').map((c) => ({ value: c, label: c })) },
           { key: 'gender', value: genderFilter, onChange: resetPage(setGenderFilter), placeholder: 'All Genders', options: GENDERS.map((g) => ({ value: g, label: g })) },
           ...(isSuperAdmin ? [{ key: 'route', value: routeFilter, onChange: resetPage(setRouteFilter), placeholder: 'All Routes', options: routes.map((r) => ({ value: r._id, label: r.routeName })) }] : []),
           { key: 'status', value: statusFilter, onChange: resetPage(setStatusFilter), placeholder: 'Active only', options: [{ value: 'active', label: 'Active' }, { value: 'inactive', label: 'Inactive' }, { value: '', label: 'All Students' }] },
